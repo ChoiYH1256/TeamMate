@@ -6,18 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".PostCreateActivity">
 
+
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/btn_cancel"
-        android:layout_width="0dp"
+        android:id="@+id/toolbar_postcreate"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/common_transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_back"
-        app:title="@string/team_add_activity_recruit"
-        app:titleTextAppearance="@style/ToolbarTitleText" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/ic_back"
+            android:onClick="onPostCreateBackButtonClick"
+            android:layout_gravity="start"/>
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/team_add_activity_recruit"
+            style="@style/ToolbarTitleText"/>
+    </androidx.appcompat.widget.Toolbar>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -36,7 +51,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_cancel">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_postcreate">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -67,6 +82,7 @@
                         android:layout_marginStart="20dp"
                         android:text="@string/team_writing_activity_title"
                         android:textColor="@color/black"
+                        android:layout_gravity="center"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -110,31 +126,34 @@
                         android:layout_marginStart="20dp">
 
                         <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/city_spinner"
+                            android:id="@+id/recruit1_spinner"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/sigungu_spinner"
+                            app:layout_constraintEnd_toStartOf="@+id/recruit2_spinner"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:entries="@array/recruitment_fields" />
 
                         <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/sigungu_spinner"
+                            android:id="@+id/recruit2_spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
-                            android:visibility="invisible"
+                            android:visibility="visible"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/dong_spinner"
-                            app:layout_constraintStart_toEndOf="@+id/city_spinner"
-                            app:layout_constraintTop_toTopOf="@+id/city_spinner" />
+                            app:layout_constraintEnd_toStartOf="@+id/recruit3_spinner"
+                            app:layout_constraintStart_toEndOf="@+id/recruit1_spinner"
+                            app:layout_constraintTop_toTopOf="@+id/recruit1_spinner"
+                            android:entries="@array/recruitment_fields" />
 
                         <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/dong_spinner"
+                            android:id="@+id/recruit3_spinner"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
-                            android:visibility="invisible"
+                            android:visibility="visible"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/sigungu_spinner" />
+                            app:layout_constraintStart_toEndOf="@+id/recruit2_spinner"
+                            android:entries="@array/recruitment_fields"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
@@ -187,14 +206,14 @@
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
                 android:background="@color/common_point_green"
-                android:visibility="invisible"
+                android:visibility="visible"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="@+id/cardview3"
                 app:layout_constraintStart_toStartOf="@+id/cardview3"
                 app:layout_constraintTop_toBottomOf="@+id/cardview3">
 
                 <LinearLayout
-                    android:id="@+id/layou_recruit_time"
+                    android:id="@+id/layout_recruit_time"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -208,16 +227,18 @@
                         android:textColor="@color/black"
                         android:text="@string/team_writing_activity_term"
                         android:textSize="18sp"
+                        android:layout_gravity="center"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tv_month_date"
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
+                        android:id="@+id/tv_date_picker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:gravity="center"
-                        android:hint="@string/team_writing_activity_tv_month_date"
-                        android:textSize="18sp" />
+                        android:text="날짜 선택"
+                        android:textSize="18sp"
+                        android:layout_gravity="center"
+                        android:layout_centerInParent="true" />
 
 
                 </LinearLayout>
@@ -326,7 +347,7 @@
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
                 android:background="@color/common_point_green"
-                android:visibility="invisible"
+                android:visibility="visible"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="@+id/cardview5"
                 app:layout_constraintStart_toStartOf="@+id/cardview5"

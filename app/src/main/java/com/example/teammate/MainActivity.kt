@@ -46,4 +46,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun onMainToPostButtonClick(view: View?){
+        val intent = Intent(this, PostActivity::class.java)
+        startActivity(intent)
+    }
+
 }

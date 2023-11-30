@@ -14,6 +14,21 @@
     <string name="signup_name_et">이름을 입력해주세요.</string>
     <string name="cancle">CANCLE</string>
 
+    <string name="back">Back</string>
+    <string name="share">Share</string>
+
+    <string-array name="recruitment_fields">
+        <item>X</item>
+        <item>프론트엔드</item>
+        <item>백엔드</item>
+        <item>기획</item>
+        <item>서버</item>
+        <item>디자인</item>
+    </string-array>
+
+    <!-- post -->
+    <string name="post_content">게시글 내용</string>
+    <string name="title">React 개발자 모집 공고</string>
 
     <!-- chat -->
     <string name="chat_title">Software Engineering</string>
