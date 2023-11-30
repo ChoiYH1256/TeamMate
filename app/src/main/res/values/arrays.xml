@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="recruitment_fields">
+        <item>X</item>
+        <item>프론트엔드</item>
+        <item>백엔드</item>
+        <item>기획</item>
+        <item>서버</item>
+        <item>디자인</item>
+    </string-array>
+
+    <string-array name="team_numbers">
+        <item>1명</item>
+        <item>2명</item>
+        <item>3명</item>
+        <item>4명</item>
+        <item>5명</item>
+        <item>6명</item>
+        <item>7명</item>
+        <item>8명</item>
+        <item>9명</item>
+        <item>10명</item>
+    </string-array>
+
+    <string-array name="genders">
+        <item>남성</item>
+        <item>여성</item>
+    </string-array>
+
+    <string-array name="skill_level_array">
+        <item>하(Lv1~3)</item>
+        <item>중(Lv4~6)</item>
+        <item>상(Lv7~10)</item>
+    </string-array>
+
+</resources>

@@ -70,7 +70,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
-                    android:id="@+id/layout_game"
+                    android:id="@+id/layout_title"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -86,17 +86,20 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/game_spinner"
+                    <EditText
+                        android:id="@+id/et_postcreatetitle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp" />
+                        android:background="@null"
+                        android:layout_marginLeft="20dp"
+                        android:hint="제목을 입력하세요"
+                        android:inputType="text" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardview3"
+                android:id="@+id/cv_recruit_field"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
@@ -168,9 +171,9 @@
                 android:background="@color/common_point_green"
                 android:visibility="invisible"
                 app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/cardview3"
-                app:layout_constraintStart_toStartOf="@+id/cardview3"
-                app:layout_constraintTop_toBottomOf="@+id/cardview3">
+                app:layout_constraintEnd_toEndOf="@+id/cv_recruit_field"
+                app:layout_constraintStart_toStartOf="@+id/cv_recruit_field"
+                app:layout_constraintTop_toBottomOf="@+id/cv_recruit_field">
 
                 <LinearLayout
                     android:id="@+id/layout_application_time"
@@ -208,9 +211,9 @@
                 android:background="@color/common_point_green"
                 android:visibility="visible"
                 app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/cardview3"
-                app:layout_constraintStart_toStartOf="@+id/cardview3"
-                app:layout_constraintTop_toBottomOf="@+id/cardview3">
+                app:layout_constraintEnd_toEndOf="@+id/cv_recruit_field"
+                app:layout_constraintStart_toStartOf="@+id/cv_recruit_field"
+                app:layout_constraintTop_toBottomOf="@+id/cv_recruit_field">
 
                 <LinearLayout
                     android:id="@+id/layout_recruit_time"
@@ -273,21 +276,14 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <Spinner
                         android:id="@+id/team_number"
-                        android:layout_width="70dp"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="20dp"
-                        android:gravity="center"
-                        android:hint="@string/team_writing_activity_tv_team_number1"
-                        android:textSize="18sp" />
+                        android:entries="@array/team_numbers"
+                        android:gravity="center" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="0dp"
-                        android:text="@string/my_number_number"
-                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -366,6 +362,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="4dp"
                         android:text="@string/team_writing_activity_team_name"
+                        android:gravity="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -458,6 +455,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="2dp"
                         android:text="@string/team_writing_activity_gender"
+                        android:gravity="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -466,7 +464,8 @@
                         android:id="@+id/gender_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="20dp" />
+                        android:layout_marginStart="20dp"
+                        android:entries="@array/genders"/>
 
                 </LinearLayout>
 
@@ -496,6 +495,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="2dp"
                         android:text="@string/team_writing_activity_skill"
+                        android:gravity="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -504,13 +504,14 @@
                         android:id="@+id/level_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="20dp" />
+                        android:layout_marginStart="20dp"
+                        android:entries="@array/skill_level_array"/>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardview9"
+                android:id="@+id/cv_postcreatecontent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -549,15 +550,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardview10"
+                android:id="@+id/cv_picture"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_margin="10dp"
                 android:background="@color/common_point_green"
                 app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/cardview9"
-                app:layout_constraintStart_toStartOf="@+id/cardview9"
-                app:layout_constraintTop_toBottomOf="@+id/cardview9">
+                app:layout_constraintEnd_toEndOf="@+id/cv_postcreatecontent"
+                app:layout_constraintStart_toStartOf="@+id/cv_postcreatecontent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_postcreatecontent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -600,12 +601,12 @@
                     </androidx.cardview.widget.CardView>
 
 
-                    <TextView
-                        android:id="@+id/tv_add_image"
+                    <Button
+                        android:id="@+id/btn_add_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/team_writing_activity_tv_add_image"
-                        android:textColor="@color/common_point_green"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/textView4"
@@ -628,7 +629,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardview10" />
+                app:layout_constraintTop_toBottomOf="@id/cv_picture" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
