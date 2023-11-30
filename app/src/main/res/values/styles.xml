@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.TeamMate" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+    <style name="CustomToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">23sp</item> <!-- 글씨 크기 조절 -->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item> <!-- 글씨 색상 조절 -->
+    </style>
+    <style name="ToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">23sp</item> <!-- 글씨 크기 조절 -->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/custom_blue</item> <!-- 글씨 색상 조절 -->
+    </style>
+</resources>

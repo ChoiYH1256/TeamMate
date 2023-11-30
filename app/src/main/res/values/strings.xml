@@ -1,3 +1,67 @@
 <resources>
     <string name="app_name">TeamMate</string>
+
+    <string name="logo">TEAMMATE</string>
+    <string name="signIn_id">아이디 찾기</string>
+    <string name="signIn_id_et">Email</string>
+    <string name="signIn_pw">Password</string>
+    <string name="signIn_pw_et">비밀번호를 입력해주세요.</string>
+    <string name="signIn_login">로그인</string>
+    <string name="signIn_signup">회원가입</string>
+    <string name="toast_msg_noinput">입력되지 않은 정보가 있습니다.</string>
+    <string name="toast_msg_idpqErr">ID/PW를 확인해주세요.</string>
+    <string name="signup_name">Username</string>
+    <string name="signup_name_et">이름을 입력해주세요.</string>
+    <string name="cancle">CANCLE</string>
+
+
+
+    <!-- sign up -->
+    <string name="sign_up_et_hint_Username">Input username</string>
+    <string name="sign_up_et_hint_phone_number">Input phone number</string>
+    <string name="sign_up_tv_username">Username</string>
+    <string name="sign_up_tv_phone_number">Phone number</string>
+    <string name="sign_up_tv_Username_description">Username은 최소 2자리 최대 8자리로 구성됩니다.</string>
+    <string name="sign_up_tv_phone_number_description">매칭에 사용될 핸드폰 번호를 입력해주세요.</string>
+    <string name="sign_up_description">Matching Manager를 사용 하기 위해\n추가정보를 입력해주세요.</string>
+    <string name="sign_up_btn">SIGN UP</string>
+    <string name="cancel_btn">CANCEL</string>
+
+
+    <!-- signin -->
+    <string name="sign_in_continue_with_google">Continue With Google</string>
+    <string name="default_web_client_id">677718539523-47ds99rnc0eupphgjm4rnbmkojntg506.apps.googleusercontent.com</string>
+
+    <string name="main_home">Home</string>
+    <string name="main_match">Match</string>
+    <string name="main_calendar">Calendar</string>
+    <string name="main_team">Team</string>
+    <string name="main_mypage">MyPage</string>
+
+    <!-- [my] -->
+    <string name="my_profile">프로필</string>
+    <string name="my_btn_Sign_Out">SIGN OUT</string>
+    <string name="my_test_username">봉선동손흥민</string>
+    <string name="my_bookmark">관심목록</string>
+    <string name="my_test_real_name">추민수</string>
+    <string name="my_test_phone_number">01028179282</string>
+    <string name="my_test_email">sonny@gmail.com</string>
+    <string name="dialog_edit_location">location</string>
+    <string name="dialog_edit_nickname">nickname</string>
+    <string name="dialog_edit_id">id</string>
+    <string name="dialog_edit_btn_save">저장</string>
+    <string name="dialog_edit_btn_cancel">취소</string>
+
+
+    <string name="toolbar_area">area</string>
+    <string name="toolbar_alarm">alarm</string>
+    <string name="toolbar_team">용병 모집/신청</string>
+    <string name="toolbar_my_page">마이 페이지</string>
+    <string name="toolbar_match">경기 매칭</string>
+    <string name="toolbar_calendar">일정 관리</string>
+    <string name="toolbar_notification">공지사항</string>
+
+
+
+
 </resources>

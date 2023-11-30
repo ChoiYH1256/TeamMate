@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="custom_lightblue">#DFF1FF</color>
+    <color name="custom_blue">#A7D9FF</color>
+
+
+    <!-- common -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="common_point_green">#53C28D</color>
+    <color name="common_point_grey">#3F3F3F</color>
+    <color name="common_grey">#BDBDBD</color>
+    <color name="common_transparent">#00ff0000</color>
+    <color name="common_selected">#BFC9D8</color>
+    <color name="common_edit_text">#717171</color>
+
+    <!-- tab -->
+    <color name="tab_btn_green">#53C28D</color>
+    <color name="tab_btn_grey">#3F3F3F</color>
+
+    <!-- calender -->
+    <color name="calendar_deep_green">#FF219653</color>
+
+    <!-- signup -->
+    <color name="signup_exception_red">#BA2930</color>
+
+    <!-- match -->
+    <color name="match_soccer_pink">#E18585</color>
+    <color name="match_futsal_purple">#53C28D</color>
+    <color name="match_basketball_orange">#F4C785</color>
+    <color name="match_badminton_brown">#6573C3</color>
+    <color name="match_bowling_skyblue">#A87BAF</color>
+
+    <!-- team -->
+    <color name="team_request_yellow">#D9D68D</color>
+    <color name="team_recruit_blue">#859FE1</color>
+
+    <!--home -->
+    <color name="home_rv_item">#E1EEFF</color>
+    <color name="home_rv_item_green">#EAFDF4</color>
+    <color name="home_rv_item_grey">#F4F4F4</color>
+
+    <!--myPage -->
+    <color name="common_gray">#BDBDBD</color>
+    <color name="my_background">#F1F6FF</color>
 </resources>
