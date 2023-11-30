@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 상단 툴바 -->
+
+    <!-- 채팅 내역을 표시할 RecyclerView -->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/chatToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/skyBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/toolbarText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chat_title"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_gravity="center" />
+
+        <!-- 뒤로가기 버튼 -->
+        <ImageButton
+            android:id="@+id/backButtonChat"
+            style="?attr/toolbarNavigationButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textSize="16sp"
+            android:layout_marginEnd="16dp"
+            android:textColor="#FFFFFF"
+            android:text="모집중" />
+
+
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/messageInputArea"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chatToolbar"
+        tools:listitem="@layout/chat_message_item"
+        tools:visibility="visible" />
+
+    <!-- 하단 메시지 입력란 -->
+    <LinearLayout
+        android:id="@+id/messageInputArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- + 버튼 -->
+        <ImageButton
+            android:id="@+id/addButton"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:src="@drawable/ic_add" /> <!-- start로 설정하여 왼쪽에 위치하게 함 -->
+
+        <!-- 메시지 입력 필드 -->
+        <EditText
+            android:id="@+id/messageEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="메시지를 입력하세요"
+            android:inputType="textMultiLine"
+            android:layout_gravity="center"
+            tools:ignore="VisualLintTextFieldSize" /> <!-- center로 설정하여 중앙에 위치하게 함 -->
+
+        <!-- 메시지 전송 버튼 -->
+        <ImageButton
+            android:id="@+id/sendMessageButton"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="73dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_send" /> <!-- end로 설정하여 오른쪽에 위치하게 함 -->
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

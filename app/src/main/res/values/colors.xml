@@ -4,6 +4,9 @@
     <color name="custom_blue">#A7D9FF</color>
 
 
+
+
+
     <!-- common -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
@@ -13,6 +16,9 @@
     <color name="common_transparent">#00ff0000</color>
     <color name="common_selected">#BFC9D8</color>
     <color name="common_edit_text">#717171</color>
+    <color name="skyBlue">#87CEEB</color>
+    <color name="colorRecruiting">#FFFFFFFF</color>
+    <color name="colorCompleted">#FFFFFFFF</color>
 
     <!-- tab -->
     <color name="tab_btn_green">#53C28D</color>

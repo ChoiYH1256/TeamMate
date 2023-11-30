@@ -26,4 +26,24 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun onMainToAlarmButtonClick(view: View?){
+        val intent = Intent(this, AlarmActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onMainToMyPageButtonClick(view: View?){
+        val intent = Intent(this, MyPageActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onMainToPostCreateButtonClick(view: View?){
+        val intent = Intent(this, PostCreateActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onMainToChatButtonClick(view: View?){
+        val intent = Intent(this, ChatActivity::class.java)
+        startActivity(intent)
+    }
+
 }
