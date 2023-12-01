@@ -12,7 +12,6 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/skyBlue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -25,31 +24,44 @@
             android:background="@color/skyBlue"
             android:contentDescription="@string/back"
             android:src="@drawable/ic_back"
-            tools:ignore="ImageContrastCheck"
-            tools:layout_editor_absoluteX="16dp" />
-
-        <ImageButton
-            android:id="@+id/shareButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@color/skyBlue"
-            android:contentDescription="@string/share"
-            android:src="@drawable/ic_share"
-            android:translationX="300dp"
-            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck"
-            tools:layout_editor_absoluteX="72dp" />
-
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/toolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-
             android:gravity="center"
             android:text="게시글 제목"
             android:textColor="@color/black" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_delete_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/btn_edge"
+                android:text="글 삭제"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp"
+                android:onClick="onDeletePostClick" />
+
+            <ImageButton
+                android:id="@+id/shareButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/skyBlue"
+                android:contentDescription="@string/share"
+                android:src="@drawable/ic_share"
+                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+        </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
 
