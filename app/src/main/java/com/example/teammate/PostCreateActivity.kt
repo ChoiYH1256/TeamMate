@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import java.util.Calendar
 import android.Manifest
+import android.widget.EditText
 
 class PostCreateActivity : AppCompatActivity() {
 
@@ -73,7 +74,43 @@ class PostCreateActivity : AppCompatActivity() {
             imageView.setImageURI(selectedImage)
         }
     }
+
+    //뒤로 가기버튼
     fun onPostCreateBackButtonClick(view: View?){
         finish()
     }
+
+    //글 작성 버튼 클릭 (유효하면 정보 저장 아니면 저장X)
+    fun onSubmitButtonClick(view: View) {
+        if (isInputValid()) {
+            saveData()
+        } else {
+            Toast.makeText(this, "글 정보가 유효하지 않습니다.", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    // 입력 데이터의 유효성을 검사하는 메서드
+    private fun isInputValid(): Boolean {
+        val titleEditText: EditText = findViewById(R.id.et_postcreatetitle)
+        val contentEditText: EditText = findViewById(R.id.et_content)
+
+        // 제목과 내용 필드가 비어있지 않은지 확인
+        if (titleEditText.text.toString().trim().isEmpty() ||
+            contentEditText.text.toString().trim().isEmpty()) {
+            return false
+        }
+
+        // 여기에 다른 필드에 대한 유효성 검사 로직을 추가할 수 있습니다.
+
+        return true
+    }
+
+    // 데이터를 저장하는 메서드
+    private fun saveData() {
+        // 여기에 데이터 저장 로직을 구현합니다.
+        // 예: 파이어베이스 또는 로컬 데이터베이스에 저장
+
+        Toast.makeText(this, "정보가 저장되었습니다.", Toast.LENGTH_LONG).show()
+    }
+
 }
