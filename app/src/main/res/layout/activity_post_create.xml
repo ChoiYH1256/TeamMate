@@ -609,6 +609,7 @@
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        android:onClick="onAddImageButton"
                         app:layout_constraintBottom_toBottomOf="@+id/textView4"
                         app:layout_constraintEnd_toEndOf="@+id/cv_photo1"
                         app:layout_constraintTop_toTopOf="@+id/textView4" />
