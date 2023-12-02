@@ -41,15 +41,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textViewStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:textSize="16sp"
-            android:layout_marginEnd="16dp"
-            android:textColor="#FFFFFF"
-            android:text="모집중" />
 
 
 
@@ -80,21 +71,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <!-- + 버튼 -->
-        <ImageButton
-            android:id="@+id/addButton"
-            style="?attr/borderlessButtonStyle"
-            android:layout_width="41dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:src="@drawable/ic_add" /> <!-- start로 설정하여 왼쪽에 위치하게 함 -->
-
         <!-- 메시지 입력 필드 -->
         <EditText
             android:id="@+id/messageEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="15dp"
             android:hint="메시지를 입력하세요"
             android:inputType="textMultiLine"
             android:layout_gravity="center"
