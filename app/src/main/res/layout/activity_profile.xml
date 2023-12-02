@@ -213,19 +213,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_pw" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tv_birth_date"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="40dp"
-                android:ems="10"
-                android:hint="생년월일을 입력해주세요."
-                android:inputType="textPassword"
                 android:minHeight="48dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:hint="생년월일을 입력해주세요."
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_birth" />
 
@@ -310,7 +310,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
             <Button
-                android:id="@+id/btn_signupok"
+                android:id="@+id/btn_profile_ok"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -326,7 +326,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/et_portfolio" />
 
             <Button
-                android:id="@+id/btn_signup_cancel"
+                android:id="@+id/btn_profile_cancel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -337,11 +337,12 @@
                 android:text="취소"
                 android:textColor="@color/custom_blue"
                 android:textStyle="bold"
+                android:onClick="onProfileCancleButtonClick"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_signupok" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_profile_ok" />
 
             <Button
                 android:id="@+id/btn_phone_auth"
