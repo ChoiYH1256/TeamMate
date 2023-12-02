@@ -57,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chatToolbar"
-        tools:listitem="@layout/chat_message_item"
+        tools:listitem="@layout/activity_chat_message_item"
         tools:visibility="visible" />
 
     <!-- 하단 메시지 입력란 -->

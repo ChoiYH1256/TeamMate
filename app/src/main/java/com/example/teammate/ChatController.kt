@@ -15,7 +15,7 @@ class MessageAdapter(private val messages: MutableList<Message>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.chat_message_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_chat_message_item, parent, false)
         return MessageViewHolder(view)
     }
 

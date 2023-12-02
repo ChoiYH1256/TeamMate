@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Create by jblee on 2020. 11. 17.
+  ~
+  ~ Copyright (c) 2020. SK M&Service. All rights reserved.
+  ~
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:state_pressed="true"
+    android:drawable="@drawable/img_floating_press"/>
+<item android:state_pressed="false"
+    android:drawable="@drawable/img_floating_nor" />
+</selector>

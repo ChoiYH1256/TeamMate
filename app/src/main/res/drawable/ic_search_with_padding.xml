@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_search"
+    android:insetLeft="10dp">
+    <!-- This adds 10dp padding to the left of ic_search drawable -->
+</inset>
