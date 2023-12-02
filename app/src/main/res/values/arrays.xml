@@ -7,6 +7,7 @@
         <item>기획</item>
         <item>서버</item>
         <item>디자인</item>
+        <item>콘텐츠</item>
     </string-array>
 
     <string-array name="team_numbers">
