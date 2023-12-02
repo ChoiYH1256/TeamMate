@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.Date
@@ -19,16 +17,12 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var sendMessageButton: ImageButton
     private lateinit var recyclerView: RecyclerView
     private lateinit var backButton: ImageButton
-    private lateinit var textViewStatus: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        // 모집중 모집완료 상태
-        textViewStatus = findViewById(R.id.textViewStatus)
-        // 상태에 따라 텍스트와 스타일 변경
-        updateStatus(true) // 예시로 모집중 상태 설정
+
 
         // 뒤로가기 버튼 참조
         backButton = findViewById(R.id.backButtonChat)
@@ -62,13 +56,5 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateStatus(isRecruiting: Boolean) {
-        if (isRecruiting) {
-            textViewStatus.text = "모집중"
-            textViewStatus.setTextColor(ContextCompat.getColor(this, R.color.colorRecruiting))
-        } else {
-            textViewStatus.text = "모집완료"
-            textViewStatus.setTextColor(ContextCompat.getColor(this, R.color.colorCompleted))
-        }
-    }
+
 }
