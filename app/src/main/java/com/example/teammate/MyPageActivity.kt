@@ -10,7 +10,7 @@ class MyPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page)
 
-        val etBirth = findViewById<EditText>(R.id.et_birth)
+        val etBirth = findViewById<EditText>(R.id.tv_birth_date)
         etBirth.setOnClickListener {
             DatePickerUtil.showDatePicker(this, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                 // 날짜 형식을 원하는 대로 조정하세요. 여기서는 YYYY-MM-DD 형식을 사용합니다.

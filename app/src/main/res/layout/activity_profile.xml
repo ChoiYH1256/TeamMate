@@ -214,7 +214,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/et_pw" />
 
             <EditText
-                android:id="@+id/et_birth"
+                android:id="@+id/tv_birth_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -275,7 +275,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_birth" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_birth_date" />
 
             <TextView
                 android:id="@+id/et_portfolio"
@@ -326,7 +326,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/et_portfolio" />
 
             <Button
-                android:id="@+id/btn_signupcancel"
+                android:id="@+id/btn_signup_cancel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -344,7 +344,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/btn_signupok" />
 
             <Button
-                android:id="@+id/btn_phone_인증"
+                android:id="@+id/btn_phone_auth"
                 android:layout_width="48dp"
                 android:layout_height="22dp"
                 android:layout_marginTop="30dp"
@@ -357,7 +357,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/et_phonenumber" />
 
             <Button
-                android:id="@+id/btn_id_인증"
+                android:id="@+id/btn_id_auth"
                 android:layout_width="48dp"
                 android:layout_height="22dp"
                 android:layout_marginTop="30dp"
@@ -370,7 +370,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/et_name" />
 
             <Button
-                android:id="@+id/btn_experience_첨부"
+                android:id="@+id/btn_experience_submit"
                 android:layout_width="48dp"
                 android:layout_height="22dp"
                 android:layout_marginTop="30dp"
@@ -380,10 +380,10 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_experience"
-                app:layout_constraintTop_toBottomOf="@+id/et_birth" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_birth_date" />
 
             <Button
-                android:id="@+id/btn_portfolio_첨부"
+                android:id="@+id/btn_portfolio_submit"
                 android:layout_width="48dp"
                 android:layout_height="22dp"
                 android:layout_marginTop="30dp"
