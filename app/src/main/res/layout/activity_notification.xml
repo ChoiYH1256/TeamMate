@@ -5,21 +5,22 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context=".AlarmActivity">
+    tools:context=".NotificationActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/btn_back"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/common_transparent"
+        android:onClick="onNotificationBackButtonClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_back"
-        android:background="@color/common_transparent"
         app:title="@string/alarm"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_alarm"
+        android:id="@+id/rv_notification"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -29,13 +30,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_back"
         app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/alarm_recyclerview_item" />
+        tools:listitem="@layout/notification_recyclerview_item" />
 
     <TextView
-        android:id="@+id/tv_alarm"
+        android:id="@+id/tv_notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/rv_alarm"
+        app:layout_constraintTop_toTopOf="@id/rv_notification"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:visibility="invisible"

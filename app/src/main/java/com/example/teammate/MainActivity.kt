@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onMainToAlarmButtonClick(view: View?){
-        val intent = Intent(this, AlarmActivity::class.java)
+        val intent = Intent(this, NotificationActivity::class.java)
         startActivity(intent)
     }
 

@@ -28,7 +28,7 @@
             android:name=".MyPageActivity"
             android:exported="false" />
         <activity
-            android:name=".AlarmActivity"
+            android:name=".NotificationActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
