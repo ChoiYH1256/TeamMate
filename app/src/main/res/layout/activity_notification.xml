@@ -30,12 +30,13 @@
 
             <TextView
                 android:id="@+id/tv_toolbar_title"
-                android:layout_width="66dp"
+                android:layout_width="55dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:textColor="@color/black"
                 android:text="@string/alarm"
                 android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:textSize="25dp" />
+                android:textSize="20dp" />
 
             <ImageButton
                 android:id="@+id/btn_notification"
