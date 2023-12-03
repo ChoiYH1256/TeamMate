@@ -25,7 +25,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_sheet_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_cancel"
         app:layout_constraintVertical_bias="0.0">
@@ -38,12 +38,14 @@
                 android:id="@+id/iv_profile"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="8dp"
                 android:background="@color/white"
                 android:scaleType="centerCrop"
                 android:src="@drawable/login"
-                app:shapeAppearanceOverlay="@style/RoundedShape"
-                tools:layout_editor_absoluteX="20dp"
-                tools:layout_editor_absoluteY="69dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                app:shapeAppearanceOverlay="@style/RoundedShape" />
 
             <TextView
                 android:id="@+id/tv_nicname"
@@ -172,13 +174,14 @@
                 android:layout_width="372dp"
                 android:layout_height="52dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:text="@string/team_calender_activity_tv_title"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -251,6 +254,7 @@
                 android:textColor="@color/white"
                 android:textSize="17sp"
                 android:textStyle="bold"
+                android:onClick="onPostToChatButtonClick"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_bookmark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.515"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/custom_lightblue"
-    tools:context=".ui.home.talent.TalentActivity">
+    tools:context=".TalentActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/btn_back"
@@ -132,7 +132,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/activity_talent_recyclerview_item" />
 
     <TextView

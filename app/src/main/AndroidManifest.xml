@@ -40,6 +40,12 @@
             android:name=".SignInActivity"
             android:exported="false" />
         <activity
+            android:name=".HomeFragment"
+            android:exported="true" />
+        <activity
+            android:name=".TalentActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

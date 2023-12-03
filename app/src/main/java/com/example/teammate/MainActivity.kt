@@ -51,4 +51,14 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun onMainToHomeButtonClick(view: View?){
+        val intent = Intent(this, HomeFragment::class.java)
+        startActivity(intent)
+    }
+
+    fun onMainToTalentButtonClick(view: View?){
+        val intent = Intent(this, TalentActivity::class.java)
+        startActivity(intent)
+    }
+
 }

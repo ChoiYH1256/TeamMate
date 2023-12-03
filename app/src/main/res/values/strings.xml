@@ -24,7 +24,7 @@
     <string name="title">React 개발자 모집 공고</string>
 
     <!-- chat -->
-    <string name="chat_title">Software Engineering</string>
+    <string name="chat_title">채팅</string>
 
 
     <!-- sign up -->
@@ -283,5 +283,29 @@
     <string name="my_team_application_edit_activity_textView4">사진</string>
     <string name="my_team_application_edit_activity_tv_add_image">사진등록</string>
     <string name="my_team_application_edit_activity_btn_submit">등록하기</string>
+
+    <!-- team_add_cartegory.xml -->
+    <string name="team_category_recruitment">용병 모집해요</string>
+    <string name="team_category_application">용병 신청해요</string>
+
+    <string name="team_myteam">팀</string>
+    <string name="team_recruitment">모집</string>
+    <string name="arena_dialog_info">경기장 정보</string>
+    <string name="arena_dialog_title">평촌중앙공원 농구장</string>
+    <string name="arena_dialog_location">장소</string>
+    <string name="arena_dialog_call">전화번호</string>
+    <string name="arena_dialog_location_text">경기도 안양시 평촌중앙공원 경기도 안양시 평촌중앙공원 경기도 안양시 평촌중앙공원</string>
+    <string name="arena_dialog_call_text">010-0000-0000</string>
+    <string name="arena_dialog_btn_cancel">CANCEL</string>
+    <string name="arena_dialog_btn_call">CALL</string>
+
+    <string name="undefined_test_value">미정 입니다.</string>
+
+
+    <!-- arena_activity -->
+    <string name="announcement_activity_tv_filter">전체 지역</string>
+    <string name="area_filter_category_tv_area">지역</string>
+    <string name="area_filter_category_btn_cancel">모두 취소</string>
+    <string name="area_filter_category_result">결과보기</string>
 
 </resources>
