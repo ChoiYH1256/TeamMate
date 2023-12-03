@@ -10,42 +10,19 @@
     <!-- 채팅 내역을 표시할 RecyclerView -->
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/chatToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/skyBlue"
+        android:id="@+id/btn_cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/common_transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        >
-
-        <TextView
-            android:id="@+id/toolbarText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/chat_title"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:layout_gravity="center" />
-
-        <!-- 뒤로가기 버튼 -->
-        <ImageButton
-            android:id="@+id/backButtonChat"
-            style="?attr/toolbarNavigationButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/ic_back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        app:navigationIcon="@drawable/ic_back"
+        app:title="글제목"
+        app:titleTextAppearance="@style/ToolbarTitleText" />
 
 
-
-
-
-    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
@@ -56,7 +33,7 @@
         app:layout_constraintBottom_toTopOf="@+id/messageInputArea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chatToolbar"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cancel"
         tools:listitem="@layout/activity_chat_message_item"
         tools:visibility="visible" />
 
