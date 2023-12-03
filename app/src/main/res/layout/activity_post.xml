@@ -28,7 +28,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_cancel"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -131,27 +131,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
 
 
-            <TextView
-                android:id="@+id/tv_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
-                android:text="@string/match_detail_description"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_photo1"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_margin="20dp"
                 app:cardCornerRadius="10dp"
-                app:layout_constraintStart_toStartOf="@+id/tv_content"
-                app:layout_constraintTop_toBottomOf="@+id/tv_content">
+                tools:layout_editor_absoluteX="20dp"
+                tools:layout_editor_absoluteY="299dp">
 
                 <ImageView
                     android:id="@+id/iv_image"
@@ -176,7 +163,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:text="@string/team_calender_activity_tv_title"
+                android:text="[인턴] SW Engineer (Frontend, Web)"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -190,11 +177,11 @@
                 android:layout_width="81dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
                 android:text="영입정보"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/cv_photo1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider" />
 

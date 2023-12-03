@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="140dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_time2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="28dp"
+                android:text="2시간 전"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_arena_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/btn_id_auth2"
+                app:layout_constraintTop_toTopOf="@+id/iv_profile" />
+
+            <TextView
+                android:id="@+id/tv_view_count2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginBottom="12dp"
+                android:text="@string/my_match_detail_activity_tv_view_count"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_arena_title"
+                app:layout_constraintStart_toEndOf="@+id/imageView4" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="11dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="12dp"
+                android:alpha="0.6"
+                app:layout_constraintBottom_toTopOf="@+id/tv_arena_title"
+                app:layout_constraintEnd_toStartOf="@+id/tv_chat_count2"
+                app:layout_constraintTop_toTopOf="@+id/tv_view_count"
+                app:srcCompat="@drawable/ic_eye" />
+
+            <TextView
+                android:id="@+id/tv_chat_count2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="@string/team_detail_view_count"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_arena_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.903"
+                app:layout_constraintStart_toEndOf="@+id/btn_id_auth2" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView4"
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="12dp"
+                android:alpha="0.6"
+                android:src="@drawable/ic_chat"
+                app:layout_constraintBottom_toTopOf="@+id/tv_arena_title"
+                app:layout_constraintEnd_toStartOf="@+id/tv_chat_count"
+                app:layout_constraintStart_toEndOf="@+id/tv_chat_count2" />
+
+            <Button
+                android:id="@+id/btn_id_auth2"
+                android:layout_width="48dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/btn_full"
+                android:text="모집중"
+                android:textSize="9sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_arena_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.087"
+                app:layout_constraintStart_toEndOf="@+id/iv_arena"
+                app:layout_constraintTop_toBottomOf="@+id/et_name" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_arena"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:background="@color/common_selected"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_arena_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="36dp"
+                android:text="포트폴리오 프로젝트 백엔드 모집"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/iv_arena"
+                app:layout_constraintTop_toTopOf="@id/iv_arena"
+                app:layout_constraintVertical_chainStyle="spread" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#자바 #스프링 #포트폴리오 #백엔드"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_arena"
+                app:layout_constraintStart_toStartOf="@+id/tv_arena_title" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

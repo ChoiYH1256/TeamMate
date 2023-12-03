@@ -5,9 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 상단 툴바 -->
-
-    <!-- 채팅 내역을 표시할 RecyclerView -->
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/btn_cancel"
@@ -19,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_back"
-        app:title="글제목"
+        app:title="게시글 제목"
         app:titleTextAppearance="@style/ToolbarTitleText" />
 
 
