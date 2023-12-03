@@ -7,6 +7,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -14,21 +15,39 @@ import android.widget.TextView
 import android.widget.Toast
 import java.util.Locale
 
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.FirebaseException
+import com.google.firebase.auth.PhoneAuthOptions
+import java.util.concurrent.TimeUnit
+
 class SignUpActivity : AppCompatActivity() {
 
     // 인증 상태를 저장하는 변수 (실제 인증 로직에 따라 수정 필요)
     private var isEmailVerified = false
     private var isPhoneNumberVerified = false
+    private var verificationId: String? = null
+
 
     //파일 첨부 textview
     private lateinit var tvExperience: TextView
     private lateinit var tvPortfolio: TextView
-
     //생년월일 textview
     private lateinit var tvBirthDate: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
+
+        findViewById<Button>(R.id.btn_phone_auth).setOnClickListener {
+            val phoneNumber = findViewById<EditText>(R.id.et_phonenumber).text.toString().trim()
+            if (phoneNumber.isNotEmpty()) {
+                startPhoneNumberVerification(phoneNumber)
+            } else {
+                Toast.makeText(this, "전화번호를 입력하세요", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         //생년월일 입력 필드 생성
         tvBirthDate = findViewById(R.id.tv_birth_date)
@@ -39,6 +58,15 @@ class SignUpActivity : AppCompatActivity() {
                 tvBirthDate.text = selectedDate
             })
         }
+        findViewById<Button>(R.id.btn_verify_otp).setOnClickListener {
+            val otp = findViewById<EditText>(R.id.et_otp).text.toString()
+            if(otp.isNotEmpty() && verificationId != null) {
+                verifyPhoneNumberWithCode(verificationId!!, otp)
+            } else {
+                Toast.makeText(this, "인증번호를 입력하세요", Toast.LENGTH_SHORT).show()
+            }
+        }
+
 
         //파일 첨부
         tvExperience = findViewById(R.id.et_experience)
@@ -51,6 +79,59 @@ class SignUpActivity : AppCompatActivity() {
             openFilePicker(PORTFOLIO_FILE_PICK)
         }
 
+    }
+
+    // 전화번호 인증 시작 함수
+    private fun startPhoneNumberVerification(phoneNumber: String) {
+        val formattedPhoneNumber = "+82" + phoneNumber.substring(1)
+        val options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
+            .setPhoneNumber(formattedPhoneNumber) // 변환된 전화번호
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(this)
+            .setCallbacks(callbacks)
+            .build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
+    }
+
+    // 전화번호 인증 콜백
+    private val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+        override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+            // 인증이 자동으로 완료되었을 때 호출됩니다.
+            signInWithPhoneAuthCredential(credential)
+        }
+
+        override fun onVerificationFailed(e: FirebaseException) {
+            // 인증 실패 시 호출됩니다.
+            Toast.makeText(this@SignUpActivity, "인증 실패: ${e.message}", Toast.LENGTH_SHORT).show()
+            Log.d("ddddd","${e.message}")
+        }
+
+        override fun onCodeSent(verificationId: String, token: PhoneAuthProvider.ForceResendingToken) {
+            // OTP가 전송되었을 때 호출됩니다.
+            Toast.makeText(this@SignUpActivity,"인증번호를 보냈습니다!", Toast.LENGTH_SHORT).show()
+            this@SignUpActivity.verificationId = verificationId
+        }
+    }
+
+    // 전화번호 인증으로 로그인
+    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+        FirebaseAuth.getInstance().signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // 인증 성공
+                    isPhoneNumberVerified = true
+                    Toast.makeText(this@SignUpActivity, "전화번호 인증 성공", Toast.LENGTH_SHORT).show()
+                } else {
+                    // 인증 실패
+                    Toast.makeText(this@SignUpActivity, "전화번호 인증 실패", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    // OTP 인증 함수
+    private fun verifyPhoneNumberWithCode(verificationId: String, code: String) {
+        val credential = PhoneAuthProvider.getCredential(verificationId, code)
+        signInWithPhoneAuthCredential(credential)
     }
 
     //파일 첨부
@@ -73,6 +154,8 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
+
+
 
     private fun getFileName(uri: Uri): String {
         var name = ""

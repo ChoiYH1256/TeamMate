@@ -101,6 +101,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_name" />
 
+
+
             <EditText
                 android:id="@+id/et_phonenumber"
                 android:layout_width="0dp"
@@ -116,6 +118,36 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_phonenumber" />
 
+
+            <EditText
+                android:id="@+id/et_otp"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="40dp"
+                android:ems="10"
+                android:hint="인증번호 입력"
+                android:minHeight="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_phonenumber" />
+
+            <Button
+                android:id="@+id/btn_verify_otp"
+                android:layout_width="60dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn_full"
+                android:text="인증확인"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.416"
+                app:layout_constraintStart_toEndOf="@+id/tv_id"
+                app:layout_constraintTop_toBottomOf="@+id/et_phonenumber" />
+
             <TextView
                 android:id="@+id/tv_id"
                 android:layout_width="0dp"
@@ -130,7 +162,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_phonenumber" />
+                app:layout_constraintTop_toBottomOf="@+id/et_otp" />
 
             <EditText
                 android:id="@+id/et_id"
@@ -343,7 +375,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/btn_signupok" />
 
             <Button
-                android:id="@+id/btn_phone_auth"
+                android:id="@+id/btn_id_auth"
                 android:layout_width="48dp"
                 android:layout_height="22dp"
                 android:layout_marginTop="30dp"
@@ -353,10 +385,10 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_id"
-                app:layout_constraintTop_toBottomOf="@+id/et_phonenumber" />
+                app:layout_constraintTop_toBottomOf="@+id/et_otp" />
 
             <Button
-                android:id="@+id/btn_id_auth"
+                android:id="@+id/btn_phone_auth"
                 android:layout_width="48dp"
                 android:layout_height="22dp"
                 android:layout_marginTop="30dp"

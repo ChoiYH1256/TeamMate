@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "39507522234",
+    "project_id": "findteammate-8edfd",
+    "storage_bucket": "findteammate-8edfd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39507522234:android:b9d6942a8f7d330bc84883",
+        "android_client_info": {
+          "package_name": "com.example.teammate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39507522234-psk345mu0lgqttudu6tujspn9l7igi6f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.teammate",
+            "certificate_hash": "cc61d65ce9a56754e672cbee85a3f1e5b16465db"
+          }
+        },
+        {
+          "client_id": "39507522234-9sbrrpggbp5hslbloc1kv6lo2rmkk03j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACKXgJ6a1ZIiMFqH6YahhysvcnPJSBMm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39507522234-9sbrrpggbp5hslbloc1kv6lo2rmkk03j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
