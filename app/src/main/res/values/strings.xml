@@ -196,5 +196,92 @@
     <string name="talent_name">이름</string>
     <string name="talent_stack">#React #Kotlin #Typescript #AWS</string>
 
+    <!-- team_detail.xml -->
+    <string name="team_detail_recruitment">팀원 신청하기</string>
+    <string name="team_detail_application">팀원 초대하기</string>
+    <string name="team_detail_title">모집/신청</string>
+    <string name="team_detail_team">작성자</string>
+    <string name="team_detail_time">5시간 전</string>
+    <string name="team_detail_slash">/</string>
+    <string name="team_detail_view_count">5</string>
+    <string name="team_detail_information">정보</string>
+    <string name="team_detail_match_title">팀원 모집</string>
+    <string name="team_detail_match">이미지</string>
+    <string name="team_detail_people_number_title">인원</string>
+    <string name="team_detail_people_number">2명</string>
+    <string name="team_detail_gender_title">성별</string>
+    <string name="team_detail_gender">남성</string>
+    <string name="team_detail_skill_title">실력</string>
+    <string name="team_detail_skill">중</string>
+    <string name="team_detail_age1">나이</string>
+    <string name="team_detail_age2">20살</string>
+    <string name="team_detail_pay">참가비</string>
+    <string name="team_detail_price">5,000원</string>
+    <string name="team_detail_team_name_title">팀이름</string>
+    <string name="team_detail_team_name">모집</string>
+    <string name="team_detail_description">글 내용</string>
+    <string name="team_detail_img">사진</string>
+
+    <!-- match_detail.xml -->
+    <string name="match_detail_dialog_info">매치</string>
+    <string name="match_detail_title">매치 제목</string>
+    <string name="match_detail_add">매치 글쓰기</string>
+    <string name="match_writing">매치 게시글</string>
+    <string name="match_detail_nickName">작성자</string>
+    <string name="match_detail_time">5시간 전</string>
+    <string name="match_detail_slash">/</string>
+    <string name="match_detail_view_count">조회 5</string>
+    <string name="match_detail_manner_score_title">매너점수</string>
+    <string name="match_detail_manner_score">5.0</string>
+    <string name="match_detail_information">정보</string>
+    <string name="match_detail_match_title">경기 종목</string>
+    <string name="match_detail_match_type">축구</string>
+    <string name="match_detail_match">무슨 정보일까</string>
+    <string name="match_detail_people_number_title">인원</string>
+    <string name="match_detail_people_number">11 VS 11</string>
+    <string name="match_detail_gender_title">성별</string>
+    <string name="match_detail_gender">남성</string>
+    <string name="match_detail_skill_title">실력</string>
+    <string name="match_detail_skill">중</string>
+    <string name="match_detail_entry_fee_title">참가비</string>
+    <string name="match_detail_entry_fee">5만원</string>
+    <string name="match_detail_team_name_title">팀 이름</string>
+    <string name="match_detail_team_name">맨시티</string>
+    <string name="match_detail_description">글 내용</string>
+    <string name="match_detail_stadium"></string>
+
+    <!-- my_match_activity, my_match_detail_activity, my_match_edit_activity, my_match_menu_bottom_sheet -->
+    <string name="my_match_activity_tv_dialog_info">매치 게시글</string>
+    <string name="my_match_activity_tv_filter">전체 지역</string>
+    <string name="my_match_detail_activity_tv_arena_title">[종목] 일정</string>
+    <string name="my_match_detail_activity_tv_arena_title2">장소</string>
+    <string name="my_match_detail_activity_btn_call_match">매치 신청하기</string>
+    <string name="my_match_detail_activity_tv_view_count">10</string>
+    <string name="my_match_edit_activity_tv_dialog_info">매치 글쓰기</string>
+    <string name="my_match_menu_bottom_sheet_tv_edit">수정하기</string>
+    <string name="my_match_menu_bottom_sheet_tv_remove">삭제하기</string>
+
+    <!-- my_team_application_delete_dialog my_team_application_detail_activity my_team_application_edit_activity-->
+    <string name="my_team_application_delete_dialog_dial_tv_text">게시글을 삭제하시겠습니까?</string>
+    <string name="my_team_application_delete_dial_btn_2">취소</string>
+    <string name="my_team_application_delete_dial_btn_1">확인</string>
+    <string name="my_team_application_detail_activity_tv_title">[종목] 일정</string>
+    <string name="my_team_application_detail_activity_tv_title2">장소</string>
+    <string name="my_team_application_detail_tv_view_count">10</string>
+    <string name="my_team_application_detail_btn_submit">신청하기</string>
+    <string name="my_team_application_edit_activity_sports">종목</string>
+    <string name="my_team_application_edit_activity_location">위치</string>
+    <string name="my_team_application_edit_activity_schedule">일정</string>
+    <string name="my_team_application_edit_activity_personnel">인원</string>
+    <string name="my_team_application_edit_activity_age1">나이</string>
+    <string name="my_team_application_edit_activity_gender">성별</string>
+    <string name="my_team_application_edit_activity_number1">0</string>
+    <string name="my_team_application_edit_activity_age2">살</string>
+    <string name="my_team_application_edit_activity_skill">실력</string>
+    <string name="my_team_application_edit_activity_detail">내용</string>
+    <string name="my_team_application_edit_activity_et_content">내용을 입력해 주세요.</string>
+    <string name="my_team_application_edit_activity_textView4">사진</string>
+    <string name="my_team_application_edit_activity_tv_add_image">사진등록</string>
+    <string name="my_team_application_edit_activity_btn_submit">등록하기</string>
 
 </resources>
