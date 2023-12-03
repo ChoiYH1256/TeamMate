@@ -26,6 +26,51 @@
     <!-- chat -->
     <string name="chat_title">채팅</string>
 
+    <!-- match_activity -->
+    <string name="match_activity_btn_cancel">취소</string>
+    <string name="match_activity_btn_select">선택하기</string>
+    <string name="match_deleted_alert_dialog_tv_text">삭제된 게시물입니다</string>
+    <string name="match_deleted_alert_dialog_btn_confirm">확인</string>
+    <string name="match_detail_bottom_sheet_btn_call_match">매치 신청하기</string>
+    <string name="match_filter_category_tv_area">지역</string>
+    <string name="match_filter_category_tv_game">경기 종목</string>
+    <string name="match_filter_category_btn_cancel">모두 취소</string>
+    <string name="match_filter_category_btn_search">결과보기</string>
+    <string name="match_fragment_tv_filter">전체 글</string>
+    <string name="match_fragment_btn_filter">필터</string>
+    <string name="match_fragment_tv_empty">선택된 정보가 없습니다!</string>
+
+    <string name="match_number_btn_cancel">취소</string>
+    <string name="match_number_btn_save">확인</string>
+    <string name="match_number_person">명</string>
+    <string name="match_sort_bottom_sheet_textView2">최근 등록순</string>
+    <string name="match_sort_bottom_sheet_textView3">가까운 거리순</string>
+    <string name="match_time_btn_cancel">취소</string>
+    <string name="match_time_btn_save">확인</string>
+    <string name="match_writing_activity_tv_dialog_info">매치 글쓰기</string>
+    <string name="match_detail_tv_arena_title">[종목] 일정</string>
+    <string name="match_detail_tv_arena_title2">장소</string>
+    <string name="match_detail_tv_view_count">10</string>
+    <string name="match_detail_btn_call_match">매치 신청하기</string>
+    <string name="match_writing_activity_team_title">팀명</string>
+    <string name="match_writing_activity_et_team_name">팀명을 입력해주세요.</string>종목
+    <string name="match_writing_activity_sports">종목</string>
+    <string name="match_writing_activity_schedule">일정</string>
+    <string name="match_writing_activity_tv_month_date">10월 10일 (화)</string>
+    <string name="match_writing_activity_tv_time">오전 10:00</string>
+    <string name="match_writing_activity_personnel">인원</string>
+    <string name="match_writing_activity_tv_team_number1">0</string>
+    <string name="match_writing_activity_vs">VS</string>
+    <string name="match_writing_activity_location">위치</string>
+    <string name="match_writing_activity_gender">성별</string>
+    <string name="match_writing_activity_skill">실력</string>
+    <string name="match_writing_activity_dues">회비</string>
+    <string name="match_writing_activity_et_entry_fee">5000</string>
+    <string name="match_writing_activity_detail">내용</string>
+    <string name="match_writing_et_content">내용을 입력해 주세요.</string>
+    <string name="match_writing_textView4">사진</string>
+    <string name="match_writing_tv_add_image">사진등록</string>
+    <string name="match_writing_btn_submit">등록하기</string>
 
     <!-- sign up -->
     <string name="sign_up_et_hint_Username">Input username</string>

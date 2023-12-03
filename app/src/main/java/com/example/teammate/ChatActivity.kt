@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.Date
@@ -17,19 +18,18 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var sendMessageButton: ImageButton
     private lateinit var recyclerView: RecyclerView
     private lateinit var backButton: ImageButton
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
 
 
-        // 뒤로가기 버튼 참조
-        backButton = findViewById(R.id.backButtonChat)
-        // 뒤로가기 버튼 클릭 리스너 설정
-        backButton.setOnClickListener {
-            finish() // 현재 액티비티 종료
+        val toolbar: Toolbar = findViewById(R.id.btn_cancel)
+        setSupportActionBar(toolbar)
+        toolbar.setNavigationOnClickListener {
+            onBackPressed() // 현재 Activity에서 뒤로 가기
         }
+
 
 
         messageEditText = findViewById(R.id.messageEditText)
