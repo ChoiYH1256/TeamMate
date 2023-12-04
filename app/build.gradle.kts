@@ -40,6 +40,14 @@ android {
 
 dependencies {
 
+    //node.js 연결
+    implementation("com.android.volley:volley:1.2.1")
+    implementation("com.google.code.gson:gson:2.3.1")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
+
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
     // TODO: Add the dependencies for Firebase products you want to use
