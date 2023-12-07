@@ -17,7 +17,13 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import java.util.Calendar
 import android.Manifest
+import android.util.Log
 import android.widget.EditText
+import android.widget.Spinner
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 
 class PostCreateActivity : AppCompatActivity() {
 
@@ -109,8 +115,42 @@ class PostCreateActivity : AppCompatActivity() {
     private fun saveData() {
         // 여기에 데이터 저장 로직을 구현합니다.
         // 예: 파이어베이스 또는 로컬 데이터베이스에 저장
+        //중요! 값은 임시로 넣은것! 다 수정해야함!! //
+        val uid = "J5uZBJXl9mhSeBydsc9mE58qWPj1" //실제 uid로 변경해야함
+        val title = findViewById<EditText>(R.id.et_postcreatetitle).text.toString()
+        val teamNumber = findViewById<Spinner>(R.id.team_number).toString()
+        val content = findViewById<EditText>(R.id.et_content).text.toString()
 
-        Toast.makeText(this, "정보가 저장되었습니다.", Toast.LENGTH_LONG).show()
+        val category = findViewById<Spinner>(R.id.recruit1_spinner).toString()
+
+        val hashtags = mutableListOf<String>() //나중에 hashtag 추가하기
+        hashtags.add(findViewById<Spinner>(R.id.recruit1_spinner).toString())
+        hashtags.add(findViewById<Spinner>(R.id.recruit2_spinner).toString())
+        hashtags.add(findViewById<Spinner>(R.id.recruit3_spinner).toString())
+
+        RetrofitClient.createPostService.createPost(PostCreate(uid,title,teamNumber,content,category,hashtags))
+            .enqueue(object : Callback<PostResponse> {
+                override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
+                    val statusCode = response.code() // HTTP 상태 코드
+                    Log.d("Response", "서버응답: ${response.body()}")
+                    Log.d("Response", "상태코드: $statusCode")
+
+                    if (response.isSuccessful) {
+                        val message = response.body()?.message ?: "게시글 생성 성공"
+                        Toast.makeText(applicationContext, "게시글이 생성되었습니다.", Toast.LENGTH_LONG).show()
+                    } else {
+                        // 에러 처리
+                        Toast.makeText(applicationContext, "게시글 등록 실패", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+
+                    Log.e("LoginError", "게시글 요청 실패: ", t) //디버깅용
+                    Toast.makeText(applicationContext, "네트워크 오류", Toast.LENGTH_SHORT).show()
+                }
+            })
+
     }
 
 }
