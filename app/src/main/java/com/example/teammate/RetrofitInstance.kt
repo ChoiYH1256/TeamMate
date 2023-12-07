@@ -24,7 +24,7 @@ object RetrofitClient {
         retrofit.create(RegisterService::class.java)
     }
 
-    val createPostService: CreatePostService by lazy{
-        retrofit.create(CreatePostService::class.java)
+    val postService: PostService by lazy{
+        retrofit.create(PostService::class.java)
     }
 }

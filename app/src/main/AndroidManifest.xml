@@ -44,7 +44,7 @@
             android:name=".SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeFragment"
+            android:name=".HomeActivity"
             android:exported="true" />
         <activity
             android:name=".TalentActivity"

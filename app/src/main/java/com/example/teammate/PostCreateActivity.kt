@@ -128,7 +128,7 @@ class PostCreateActivity : AppCompatActivity() {
         hashtags.add(findViewById<Spinner>(R.id.recruit2_spinner).toString())
         hashtags.add(findViewById<Spinner>(R.id.recruit3_spinner).toString())
 
-        RetrofitClient.createPostService.createPost(PostCreate(uid,title,teamNumber,content,category,hashtags))
+        RetrofitClient.postService.createPost(PostCreate(uid,title,teamNumber,content,category,hashtags))
             .enqueue(object : Callback<PostResponse> {
                 override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
                     val statusCode = response.code() // HTTP 상태 코드

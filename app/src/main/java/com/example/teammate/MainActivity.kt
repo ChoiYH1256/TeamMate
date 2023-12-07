@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onMainToHomeButtonClick(view: View?){
-        val intent = Intent(this, HomeFragment::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
     }
 
