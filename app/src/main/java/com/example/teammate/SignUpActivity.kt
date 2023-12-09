@@ -1,10 +1,10 @@
 package com.example.teammate
 
+import DatePickerUtil
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.OpenableColumns
 import android.util.Log
@@ -13,19 +13,19 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import java.util.Locale
-
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthProvider
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseException
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
-import java.util.concurrent.TimeUnit
-
+import com.google.firebase.auth.PhoneAuthProvider
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Locale
+import java.util.concurrent.TimeUnit
+
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -114,6 +114,7 @@ class SignUpActivity : AppCompatActivity() {
 
                             val message = response.body()?.message ?: "회원가입 성공"
                             Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                            finish()
                         } else {
                             // 에러 처리
                             Toast.makeText(applicationContext, "회원가입 실패", Toast.LENGTH_SHORT).show()
@@ -138,7 +139,7 @@ class SignUpActivity : AppCompatActivity() {
     fun onIdAuthButtonClick(view: View) {
         if (isPhoneNumberVerified) {
             val email = findViewById<EditText>(R.id.et_id).text.toString()
-            if(!(isValidDomain(email, validDomains)){)
+            if(!(isValidDomain(email))){
                 Toast.makeText(this, "대학생 이메일이 아닙니다.", Toast.LENGTH_LONG).show()
                 return
             }
@@ -154,6 +155,9 @@ class SignUpActivity : AppCompatActivity() {
                                         Toast.makeText(this, "인증 이메일 발송됨: $email", Toast.LENGTH_LONG).show()
                                     }
                                 }
+                        }
+                        else{
+                            Toast.makeText(this, "이미 등록된 이메일 주소입니다.", Toast.LENGTH_LONG).show()
                         }
                     }
             } else {
@@ -340,19 +344,202 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     fun isValidDomain(email: String): Boolean {
-        val text = ""
-        val parts = email.split("@")
-        val validDomains = listOf
-        if (parts.size == 2) {
-            val domain = parts[1]
+// 이메일 주소에서 '@'를 기준으로 도메인 부분을 추출합니다.
+        // 이메일 주소에서 '@'를 기준으로 도메인 부분을 추출합니다.
+        val parts: List<String> = email.split("@")
 
-            // 도메인 부분을 확인하여 유효한 도메인 목록에 속하는지 확인
-            if (validDomains.contains(domain)) {
-                return true // 유효한 도메인이면 이메일 주소가 유효함
+        if (parts.size != 2) {
+            // '@'가 하나가 아닌 경우 유효하지 않은 형식입니다.
+            return false
+        }
+
+        // 도메인 부분을 추출합니다.
+        val domain = parts[1]
+
+        // 대학교 도메인 리스트를 만듭니다.
+
+        // 대학교 도메인 리스트를 만듭니다.
+        val validDomains = arrayOf(
+            "gachon.ac.kr",
+            "csj.ac.kr",
+            "gangdong.ac.kr",
+            "gyc.ac.kr",
+            "kt.ac.kr",
+            "gw.ac.kr",
+            "gc.ac.kr",
+            "namhae.ac.kr",
+            "kit.ac.kr",
+            "kyungmin.ac.kr",
+            "kbu.ac.kr",
+            "kbsc.ac.kr",
+            "gpc.ac.kr",
+            "kbc.ac.kr",
+            "gs.ac.kr",
+            "kwc.ac.kr",
+            "kic.ac.kr",
+            "kmcu.ac.kr",
+            "kaywon.ac.kr",
+            "kgrc.ac.kr",
+            "kwangyang.ac.kr",
+            "ghu.ac.kr",
+            "gumi.ac.kr",
+            "koje.ac.kr",
+            "kookje.ac.kr",
+            "kcn.ac.kr",
+            "kunjang.ac.kr",
+            "ccn.ac.kr",
+            "kcs.ac.kr",
+            "gimcheon.ac.kr",
+            "kimpo.ac.kr",
+            "gimhae.ac.kr",
+            "nonghyup.ac.kr",
+            "tk.ac.kr",
+            "ttc.ac.kr",
+            "tsu.ac.kr",
+            "dfc.ac.kr",
+            "dhc.ac.kr",
+            "ddu.ac.kr",
+            "daedong.ac.kr",
+            "daelim.ac.kr",
+            "daewon.ac.kr",
+            "hit.ac.kr",
+            "dkc.ac.kr",
+            "dongnam.ac.kr",
+            "tu.ac.kr",
+            "dpc.ac.kr",
+            "dsc.ac.kr",
+            "dima.ac.kr",
+            "dongac.ac.kr",
+            "dongyang.ac.kr",
+            "duc.ac.kr",
+            "dist.ac.kr",
+            "tw.ac.kr",
+            "dit.ac.kr",
+            "dongju.ac.kr",
+            "doowon.ac.kr",
+            "masan.ac.kr",
+            "mjc.ac.kr",
+            "mokpo-c.ac.kr",
+            "mjc.ac.kr",
+            "mokpo-c.ac.kr",
+            "mkc.ac.kr",
+            "baewha.ac.kr",
+            "bsc.ac.kr",
+            "bsks.ac.kr",
+            "bist.ac.kr",
+            "bwc.ac.kr",
+            "busanarts.ac.kr",
+            "bc.ac.kr",
+            "shu.ac.kr",
+            "syu.ac.kr",
+            "sy.ac.kr",
+            "sorabol.ac.kr",
+            "seoyeong.ac.kr",
+            "shjc.ac.kr",
+            "snjc.ac.kr",
+            "seoularts.ac.kr",
+            "seoil.ac.kr",
+            "seojeong.ac.kr",
+            "sohae.ac.kr",
+            "sunlin.ac.kr",
+            "sdc.ac.kr",
+            "sungsim.ac.kr",
+            "saekyung.ac.kr",
+            "songgok.ac.kr",
+            "songwon.ac.kr",
+            "songho.ac.kr",
+            "sc.ac.kr",
+            "ssc.ac.kr",
+            "swc.ac.kr",
+            "suncheon.ac.kr",
+            "sewc.ac.kr",
+            "shingu.ac.kr",
+            "shinsung.ac.kr",
+            "sau.ac.kr",
+            "shc.ac.kr",
+            "motor.ac.kr",
+            "asc.ac.kr",
+            "ansan.ac.kr",
+            "yit.ac.kr",
+            "yeonsung.ac.kr",
+            "yonam.ac.kr",
+            "yc.ac.kr",
+            "yflc.ac.kr",
+            "ync.ac.kr",
+            "ycc.ac.kr",
+            "yjc.ac.kr",
+            "osan.ac.kr",
+            "ysc.ac.kr",
+            "wst.ac.kr",
+            "wsi.ac.kr",
+            "uc.ac.kr",
+            "wat.ac.kr",
+            "wkhc.ac.kr",
+            "wonju.ac.kr",
+            "yuhan.ac.kr",
+            "induk.ac.kr",
+            "jeiu.ac.kr",
+            "icc.ac.kr",
+            "itc.ac.kr",
+            "jangan.ac.kr",
+            "chunnam-c.ac.kr",
+            "dorip.ac.kr",
+            "jbsc.ac.kr",
+            "jk.ac.kr",
+            "jvision.ac.kr",
+            "ctc.ac.kr",
+            "jeju.ac.kr",
+            "chu.ac.kr",
+            "cnc.ac.kr",
+            "cst.ac.kr",
+            "jhc.ac.kr",
+            "csc.ac.kr",
+            "cmu.ac.kr",
+            "yonam.ac.kr",
+            "chungkang.academy",
+            "scjc.ac.kr",
+            "ch.ac.kr",
+            "cyc.ac.kr",
+            "cpu.ac.kr",
+            "chsu.ac.kr",
+            "ok.ac.kr",
+            "pohang.ac.kr",
+            "kg.ac.kr",
+            "ktc.ac.kr",
+            "af.ac.kr",
+            "hanrw.ac.kr",
+            "klc.ac.kr",
+            "pro.ac.kr",
+            "icpc.ac.kr",
+            "krc.ac.kr",
+            "kopo.ac.kr", // 추가 도메인
+            "hsc.ac.kr", // 추가 도메인
+            "hywoman.ac.kr", // 추가 도메인
+            "hanyeong.ac.kr", // 추가 도메인
+            "hj.ac.kr", // 추가 도메인
+            "hu.ac.kr", // 추가 도메인
+            "kaya.ac.kr", // 추가 도메인
+            "ggu.ac.kr", // 추가 도메인
+            "gwnu.ac.kr", // 추가 도메인
+            "knu.ac.kr", // 추가 도메인
+            "daejeon.ac.kr", // 추가 도메인
+            "ajou.ac.kr"
+        )
+
+        // 대학교 도메인 리스트에 포함되어 있는지 확인합니다.
+
+        // 대학교 도메인 리스트에 포함되어 있는지 확인합니다.
+        for (validDomain in validDomains) {
+            if (domain == validDomain) {
+                return true
             }
         }
 
+        // 대학교 도메인 리스트에 포함되지 않으면 유효하지 않은 도메인입니다.
+
+        // 대학교 도메인 리스트에 포함되지 않으면 유효하지 않은 도메인입니다.
         return false
+
     }
 
 

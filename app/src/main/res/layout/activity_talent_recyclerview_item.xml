@@ -57,7 +57,6 @@
                 android:text="@string/talent_major"
                 android:textSize="9sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="iv_profile"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
                 app:layout_constraintTop_toTopOf="@+id/iv_profile" />
 
