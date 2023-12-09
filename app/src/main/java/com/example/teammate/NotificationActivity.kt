@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import androidx.appcompat.widget.Toolbar
 
 class NotificationActivity : AppCompatActivity() {
 
@@ -14,14 +15,17 @@ class NotificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)
 
-      //  btnNotification = findViewById(R.id.btn_notification)
-      // updateNotificationIcon() // 초기 상태 설정
+        val toolbar = findViewById<Toolbar>(R.id.btn_cancel)
+        setSupportActionBar(toolbar)
+
+        // 뒤로 가기 아이콘 클릭 시 액티비티 종료
+        toolbar.setNavigationOnClickListener(View.OnClickListener {
+            finish()
+        })
     }
 
     //뒤로가기 버튼
-    fun onNotificationBackButtonClick(view: View?){
-        finish();
-    }
+
 
     //notificationEnable 설정 (버튼 누르면 활성화/비활성화)
     fun onNotificationEnableButtonClick(view: View) {
