@@ -50,7 +50,7 @@ data class UserLogin(val email: String, val password: String)
 data class UserSignup(val email: Any, val password: Any, val major: Any, val grade: Any, val region: Any)
 data class UserProfile(val uid: String, val name: String, val birth: String, val phoneNumber: String, val university: String, val experience: String, val major: String, val grade: String, val region: String)
 data class GenericResponse(val message: String)
-data class PostCreate(val uid: Any, val title: Any, val teamNumber: Any, val content: Any, val category: Any, val hashtags: Any)
+data class PostCreate(val uid: String, val title: String, val teamNumber: Any, val content: Any, val category: Any, val hashtags: Any)
 
 
 ////////////////////// 데이터 클래스 /////////////////////

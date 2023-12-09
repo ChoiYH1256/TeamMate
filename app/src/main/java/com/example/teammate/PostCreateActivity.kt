@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import java.util.Calendar
 import android.Manifest
+import android.content.Context
 import android.util.Log
 import android.widget.EditText
 import android.widget.Spinner
@@ -116,14 +117,18 @@ class PostCreateActivity : AppCompatActivity() {
         // 여기에 데이터 저장 로직을 구현합니다.
         // 예: 파이어베이스 또는 로컬 데이터베이스에 저장
         //중요! 값은 임시로 넣은것! 다 수정해야함!! //
-        val uid = "J5uZBJXl9mhSeBydsc9mE58qWPj1" //실제 uid로 변경해야함
+        val uid: String = getSavedUid() ?: "" //현재 나의 uid를 가져옴
         val title = findViewById<EditText>(R.id.et_postcreatetitle).text.toString()
-        val teamNumber = findViewById<Spinner>(R.id.team_number).toString()
+
+        val teamNumberSpinner = findViewById<Spinner>(R.id.team_number)
+        val teamNumber = teamNumberSpinner.selectedItem?.toString() ?: ""
+
         val content = findViewById<EditText>(R.id.et_content).text.toString()
 
-        val category = findViewById<EditText>(R.id.tv_major).text.toString() // category 전공으로 둠
+        val category = findViewById<EditText>(R.id.et_postcreatemajor).text.toString() // category 전공으로 둠
 
         val hashtags = mutableListOf<String>() //나중에 hashtag 추가하기 //해쉬태그가 필요한가?
+        hashtags.add("gg")
 
         RetrofitClient.postService.createPost(PostCreate(uid,title,teamNumber,content,category,hashtags))
             .enqueue(object : Callback<PostResponse> {
@@ -150,4 +155,9 @@ class PostCreateActivity : AppCompatActivity() {
 
     }
 
+
+    private fun getSavedUid(): String? {
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getString("uid", null) // uid 값 불러오기, 없으면 null 반환
+    }
 }

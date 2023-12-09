@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,30 +28,39 @@ class HomeActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.tool_bar) // toolbar ID를 확인하세요.
         setSupportActionBar(toolbar)
 
-        RetrofitClient.postService.getAllPosts()
-            .enqueue(object : Callback<List<Post>> {
-                override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
-                    if (response.isSuccessful) {
-                        val posts = response.body() ?: emptyList()
-                        displayPosts(posts)
-                        // 게시물 목록 사용
-                    } else {
-                        // 오류 처리
-                        Log.e("GetPostsError", "오류:${response.errorBody()?.string()}")
-                    }
+        RetrofitClient.postService.getAllPosts().enqueue(object : Callback<List<Post>> {
+            override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
+                if (response.isSuccessful) {
+                    val posts = response.body() ?: emptyList()
+                    setupRecyclerView(posts)
+                } else {
+                    Log.e("GetPostsError", "오류: ${response.errorBody()?.string()}")
                 }
+            }
 
-                override fun onFailure(call: Call<List<Post>>, t: Throwable) {
-                    // 네트워크 오류 처리
-                    Log.e("GetPostsError", "네트워크 오류: ", t)
-                }
-            })
+            override fun onFailure(call: Call<List<Post>>, t: Throwable) {
+                Log.e("GetPostsError", "네트워크 오류: ", t)
+            }
+        })
+
+        val tvMoreAnnouncement = findViewById<TextView>(R.id.tv_moreAnnouncement)
+        tvMoreAnnouncement.setOnClickListener(View.OnClickListener {
+            // 다른 액티비티로 이동하는 코드 작성
+            val intent = Intent(this, RecruitActivity::class.java)
+            startActivity(intent)
+        })
+
+
     }
 
-    fun displayPosts(posts: List<Post>) {
+    private fun setupRecyclerView(posts: List<Post>) {
         val recyclerView = findViewById<RecyclerView>(R.id.rv_announcement)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = HomePostRecyclerviewAdapter(posts)
+        recyclerView.adapter = HomePostRecyclerviewAdapter(posts) { post ->
+            val intent = Intent(this, PostActivity::class.java)
+            intent.putExtra("POST_ID", post.postId)
+            startActivity(intent)
+        }
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
