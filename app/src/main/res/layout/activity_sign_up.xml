@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="197dp">
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="43dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -487,9 +487,10 @@
 
             <Button
                 android:id="@+id/btn_id_auth"
-                android:layout_width="48dp"
-                android:layout_height="22dp"
-                android:layout_marginTop="100dp"
+                android:layout_width="70dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                 android:background="@drawable/btn_full"
                 android:onClick="onIdAuthButtonClick"
                 android:text="인증"
@@ -502,9 +503,10 @@
 
             <Button
                 android:id="@+id/btn_phone_auth"
-                android:layout_width="48dp"
-                android:layout_height="22dp"
-                android:layout_marginTop="30dp"
+                android:layout_width="70dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                 android:background="@drawable/btn_full"
                 android:text="인증"
                 android:textColor="@color/white"
@@ -515,9 +517,10 @@
 
             <Button
                 android:id="@+id/btn_experience_submit"
-                android:layout_width="48dp"
-                android:layout_height="22dp"
-                android:layout_marginTop="30dp"
+                android:layout_width="70dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                 android:background="@drawable/btn_full"
                 android:text="첨부"
                 android:textColor="@color/white"
@@ -528,9 +531,10 @@
 
             <Button
                 android:id="@+id/btn_portfolio_submit"
-                android:layout_width="48dp"
-                android:layout_height="22dp"
-                android:layout_marginTop="30dp"
+                android:layout_width="70dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                 android:background="@drawable/btn_full"
                 android:text="첨부"
                 android:textColor="@color/white"

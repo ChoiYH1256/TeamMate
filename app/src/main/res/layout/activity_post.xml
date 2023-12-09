@@ -137,8 +137,9 @@
                 android:layout_height="200dp"
                 android:layout_margin="20dp"
                 app:cardCornerRadius="10dp"
-                tools:layout_editor_absoluteX="20dp"
-                tools:layout_editor_absoluteY="299dp">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView7">
 
                 <ImageView
                     android:id="@+id/iv_image"
@@ -219,7 +220,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_submit2"
                 android:layout_width="160dp"
-                android:layout_height="43dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/btn_full"
@@ -234,7 +235,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_submit3"
                 android:layout_width="160dp"
-                android:layout_height="43dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:background="@drawable/btn_full"
                 android:text="채팅하기"

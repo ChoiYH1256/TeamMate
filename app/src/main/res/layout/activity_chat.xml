@@ -53,6 +53,7 @@
             android:layout_marginLeft="15dp"
             android:hint="메시지를 입력하세요"
             android:inputType="textMultiLine"
+            android:minHeight="48dp"
             android:layout_gravity="center"
             tools:ignore="VisualLintTextFieldSize" /> <!-- center로 설정하여 중앙에 위치하게 함 -->
 
@@ -64,7 +65,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/ic_send"
-            android:background="@drawable/btn_full" /> <!-- end로 설정하여 오른쪽에 위치하게 함 -->
+            android:background="@drawable/btn_full"
+            android:contentDescription="send_message"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
