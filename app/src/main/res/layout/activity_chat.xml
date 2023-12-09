@@ -10,7 +10,6 @@
         android:id="@+id/btn_cancel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/common_transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,10 +60,11 @@
         <ImageButton
             android:id="@+id/sendMessageButton"
             style="?attr/borderlessButtonStyle"
-            android:layout_width="73dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:src="@drawable/ic_send" /> <!-- end로 설정하여 오른쪽에 위치하게 함 -->
+            android:layout_gravity="center"
+            android:src="@drawable/ic_send"
+            android:background="@drawable/btn_full" /> <!-- end로 설정하여 오른쪽에 위치하게 함 -->
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

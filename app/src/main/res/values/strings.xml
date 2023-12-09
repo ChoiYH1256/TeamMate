@@ -166,14 +166,9 @@
     <string name="team_age_btn_cancel">취소</string>
     <string name="team_age_btn_save">확인</string>
     <string name="team_age_tv_age">살</string>
-    <string name="team_calender_btn_cancel">취소</string>
-    <string name="team_calender_btn_select">선택하기</string>
-    <string name="team_calender_activity_tv_title">제목</string>
-    <string name="team_calender_activity_tv_title2">모집분야</string>
-    <string name="team_calender_activity_btn_submit">신청하기</string>
-    <string name="team_calender_activity_tv_view_count">10</string>
     <string name="team_filter_category_tv_area">지역</string>
-    <string name="team_filter_category_tv_game">경기 종목</string>
+    <string name="team_filter_category_major">전공</string>
+    <string name="team_filter_category_grade">학년</string>
     <string name="team_filter_category_btn_cancel">모두 취소</string>
     <string name="team_filter_category_btn_search">결과보기</string>
     <string name="team_fragment_tv_filter">전체 글</string>
@@ -193,11 +188,7 @@
     <string name="team_writing_activity_tv_age">살</string>
     <string name="team_writing_activity_age1">나이</string>
     <string name="team_writing_activity_vs">VS</string>
-    <string name="team_writing_activity_field">모집분야</string>
-    <string name="team_writing_activity_gender">성별</string>
-    <string name="team_writing_activity_skill">실력</string>
-    <string name="team_writing_activity_dues">회비</string>
-    <string name="team_writing_activity_et_entry_fee">5000</string>
+    <string name="team_writing_activity_major">전공</string>
     <string name="team_writing_activity_detail">내용</string>
     <string name="team_writing_activity_et_content">내용을 입력해 주세요.</string>
     <string name="team_writing_activity_textView4">사진</string>
@@ -237,9 +228,9 @@
     <string name="talent_title">인재정보 공개</string>
     <string name="talent_filter">필터</string>
     <string name="talent_info">인재정보</string>
-    <string name="talent_major">안드로이드</string>
+    <string name="talent_major">소프트웨어학과</string>
     <string name="talent_name">이름</string>
-    <string name="talent_stack">#React #Kotlin #Typescript #AWS</string>
+    <string name="talent_stack">아주대학교</string>
 
     <!-- team_detail.xml -->
     <string name="team_detail_recruitment">팀원 신청하기</string>

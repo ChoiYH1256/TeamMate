@@ -20,41 +20,6 @@
         app:title="알림"
         app:titleTextAppearance="@style/ToolbarTitleText" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/btn_back"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:background="?attr/selectableItemBackground"
-                android:src="@drawable/ic_back"
-                android:onClick="onNotificationBackButtonClick"
-                android:contentDescription="@string/back" />
-
-            <TextView
-                android:id="@+id/tv_toolbar_title"
-                android:layout_width="55dp"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:textColor="@color/black"
-                android:text="@string/alarm"
-                android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:textSize="20dp" />
-
-            <ImageButton
-                android:id="@+id/btn_notification"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="15dp"
-                android:onClick="onNotificationEnableButtonClick"
-                android:background="?attr/selectableItemBackground"
-                android:src="@drawable/ic_notification" />
-        </RelativeLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_notification"
         android:layout_width="match_parent"

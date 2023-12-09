@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/custom_lightblue"
     tools:context=".TalentActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/btn_back"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/common_transparent"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -55,7 +54,7 @@
                     android:id="@+id/btn_filter"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/custom_blue"
+                    android:background="@drawable/btn_full"
                     android:drawableRight="@drawable/ic_filter2"
                     android:padding="5dp"
                     android:paddingStart="18dp"
@@ -164,13 +163,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="30dp"
         app:tint="@null"
+        android:contentDescription="fab_add"
         tools:ignore="ContentDescription" />
 
 
     <EditText
         android:id="@+id/searchEditText"
         android:layout_width="352dp"
-        android:layout_height="39dp"
+        android:layout_height="48dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
