@@ -39,7 +39,7 @@ class SignInActivity : AppCompatActivity() {
 
         val email = emailEditText.text.toString()
         val password = passwordEditText.text.toString()
-        RetrofitClient.instance.loginUser(UserLogin(email, password))
+        RetrofitClient.authService.loginUser(UserLogin(email, password))
             .enqueue(object : Callback<UserResponse> {
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                     Log.d("Response", "서버 응답: ${response.body()}")

@@ -22,11 +22,15 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthOptions
 import java.util.concurrent.TimeUnit
 
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 class SignUpActivity : AppCompatActivity() {
 
     // 인증 상태를 저장하는 변수 (실제 인증 로직에 따라 수정 필요)
-    private var isEmailVerified = false
-    private var isPhoneNumberVerified = false
+    private var isEmailVerified = true //나중에 false로 바꿔주기 (디버깅용)
+    private var isPhoneNumberVerified = true
     private var verificationId: String? = null
 
 
@@ -177,11 +181,43 @@ class SignUpActivity : AppCompatActivity() {
     }
 
 
-    // onSignUpButtonClick 함수 작성중
+    // 회원가입 버튼 클릭 (회원가입로직)
+    // 회원가입 로직은 성공 (실제 계정 생성확인)
+    // region, major, grade 가 UI에 포함돼야함
     fun onSignUpButtonClick(view: View) {
         if (validateInputs() && isEmailVerified && isPhoneNumberVerified) {
+            val region = findViewById<EditText>(R.id.et_name).text.toString()
+            val email = findViewById<EditText>(R.id.et_id).text.toString()
+            val password = findViewById<EditText>(R.id.et_pw).text.toString()
+            val major = findViewById<EditText>(R.id.et_university).text.toString()
+            val grade = findViewById<EditText>(R.id.et_phonenumber).text.toString()
+
+
+
+            RetrofitClient.registerService.signupUser(UserSignup(email,password,major,grade,region))
+                .enqueue(object: Callback<UserResponse>{
+                    override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>){
+                        val statusCode = response.code() // HTTP 상태 코드
+                        Log.d("Response", "서버응답: ${response.body()}")
+                        Log.d("Response", "오류: $statusCode")
+                        if(response.isSuccessful){
+                            val message = response.body()?.message ?: "회원가입 성공"
+                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                        } else {
+                            // 에러 처리
+                            Toast.makeText(applicationContext, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                    override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+
+                        Log.e("LoginError", "로그인 요청 실패: ", t) //디버깅용
+                        Toast.makeText(applicationContext, "네트워크 오류", Toast.LENGTH_SHORT).show()
+                    }
+                })
             // 회원가입 처리
             // Firebase나 다른 백엔드 서비스를 사용하여 사용자 정보 저장
+
         } else {
             // 유효성 검사 실패 또는 인증이 완료되지 않음
             Toast.makeText(this, "모든 필수 정보를 입력하고 인증을 완료해야 합니다.", Toast.LENGTH_SHORT).show()
