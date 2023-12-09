@@ -138,6 +138,10 @@ class SignUpActivity : AppCompatActivity() {
     fun onIdAuthButtonClick(view: View) {
         if (isPhoneNumberVerified) {
             val email = findViewById<EditText>(R.id.et_id).text.toString()
+            if(!(isValidDomain(email, validDomains)){)
+                Toast.makeText(this, "대학생 이메일이 아닙니다.", Toast.LENGTH_LONG).show()
+                return
+            }
             if (email.isNotEmpty()) {
                 val auth = FirebaseAuth.getInstance()
                 auth.createUserWithEmailAndPassword(email, "yourPassword") // 사용자 비밀번호 입력
@@ -334,5 +338,25 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
     }
+
+    fun isValidDomain(email: String): Boolean {
+        val text = ""
+        val parts = email.split("@")
+        val validDomains = listOf
+        if (parts.size == 2) {
+            val domain = parts[1]
+
+            // 도메인 부분을 확인하여 유효한 도메인 목록에 속하는지 확인
+            if (validDomains.contains(domain)) {
+                return true // 유효한 도메인이면 이메일 주소가 유효함
+            }
+        }
+
+        return false
+    }
+
+
+
+
 
 }
