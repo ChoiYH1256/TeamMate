@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.FirebaseException
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthOptions
 import java.util.concurrent.TimeUnit
 
@@ -29,8 +30,8 @@ import retrofit2.Response
 class SignUpActivity : AppCompatActivity() {
 
     // 인증 상태를 저장하는 변수 (실제 인증 로직에 따라 수정 필요)
-    private var isEmailVerified = true //나중에 false로 바꿔주기 (디버깅용)
-    private var isPhoneNumberVerified = true
+    private var isEmailVerified = false //나중에 false로 바꿔주기 (디버깅용)
+    private var isPhoneNumberVerified = false
     private var verificationId: String? = null
 
 
@@ -74,7 +75,7 @@ class SignUpActivity : AppCompatActivity() {
 
         //파일 첨부
         tvExperience = findViewById(R.id.et_experience)
-        tvPortfolio = findViewById(R.id.tv_portfolio2)
+        tvPortfolio = findViewById(R.id.et_portfolio)
         findViewById<Button>(R.id.btn_experience_submit).setOnClickListener {
             openFilePicker(EXPERIENCE_FILE_PICK)
         }
@@ -84,6 +85,106 @@ class SignUpActivity : AppCompatActivity() {
         }
 
     }
+
+    fun onSignUpButtonClick(view: View) {
+        if (validateInputs() && isEmailVerified && isPhoneNumberVerified) {
+            val region = findViewById<EditText>(R.id.et_area).text.toString()
+            val email = findViewById<EditText>(R.id.et_id).text.toString()
+            val password = findViewById<EditText>(R.id.et_pw).text.toString()
+            val major = findViewById<EditText>(R.id.et_major).text.toString()
+            val grade = findViewById<EditText>(R.id.et_grade).text.toString()
+
+            // 플러스 프로필 생성
+            val name = findViewById<EditText>(R.id.et_name).text.toString()
+            val birth = findViewById<TextView>(R.id.tv_birth_date).text.toString()
+            val university = findViewById<EditText>(R.id.et_university).text.toString()
+            val experience = findViewById<TextView>(R.id.et_experience).text.toString()
+            val phoneNumber = findViewById<TextView>(R.id.et_phonenumber).text.toString()
+
+
+            RetrofitClient.authService.signupUser(UserSignup(email,password,major,grade,region))
+                .enqueue(object: Callback<UserResponse>{
+                    override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>){
+                        val statusCode = response.code() // HTTP 상태 코드
+                        Log.d("Response", "서버응답: ${response.body()}")
+                        Log.d("Response", "오류: $statusCode")
+                        if(response.isSuccessful){
+                            val uid = response.body()?.uid
+                            createProfile(uid, name, birth, phoneNumber, university,experience, major, grade, region)
+
+                            val message = response.body()?.message ?: "회원가입 성공"
+                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                        } else {
+                            // 에러 처리
+                            Toast.makeText(applicationContext, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+
+                        Log.e("LoginError", "로그인 요청 실패: ", t) //디버깅용
+                        Toast.makeText(applicationContext, "네트워크 오류", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            // 회원가입 처리
+            // Firebase나 다른 백엔드 서비스를 사용하여 사용자 정보 저장
+
+        } else {
+            // 유효성 검사 실패 또는 인증이 완료되지 않음
+            Toast.makeText(this, "모든 필수 정보를 입력하고 인증을 완료해야 합니다.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun onIdAuthButtonClick(view: View) {
+        if (isPhoneNumberVerified) {
+            val email = findViewById<EditText>(R.id.et_id).text.toString()
+            if (email.isNotEmpty()) {
+                val auth = FirebaseAuth.getInstance()
+                auth.createUserWithEmailAndPassword(email, "yourPassword") // 사용자 비밀번호 입력
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
+                            user?.sendEmailVerification()
+                                ?.addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        Toast.makeText(this, "인증 이메일 발송됨: $email", Toast.LENGTH_LONG).show()
+                                    }
+                                }
+                        }
+                    }
+            } else {
+                Toast.makeText(this, "이메일 주소를 입력하세요", Toast.LENGTH_SHORT).show()
+            }
+        }
+        else {
+            Toast.makeText(this, "전화번호 인증을 완료해야 합니다.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    //이메일 인증완료 버튼
+    fun onOtpEmailButtonClick(view: View){
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            user.reload().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Firebase 사용자 정보 업데이트가 성공한 경우
+                    isEmailVerified = user.isEmailVerified
+                    if (isEmailVerified) {
+                        // 이메일 인증이 완료된 경우
+                        Toast.makeText(this, "이메일 인증이 완료되었습니다.", Toast.LENGTH_LONG).show()
+                        deleteUserAccount(user)
+                    } else {
+                        // 이메일 인증이 아직 완료되지 않은 경우
+                        Toast.makeText(this, "이메일 인증이 아직 완료되지 않았습니다.", Toast.LENGTH_LONG).show()
+                    }
+                } else {
+                    // Firebase 사용자 정보 업데이트 실패
+                    Toast.makeText(this, "사용자 정보 업데이트 실패: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
 
     // 전화번호 인증 시작 함수
     private fun startPhoneNumberVerification(phoneNumber: String) {
@@ -176,7 +277,7 @@ class SignUpActivity : AppCompatActivity() {
         private const val PORTFOLIO_FILE_PICK = 2
     }
 
-    fun onSignUpCancleButtonClick(view: View?){
+    fun onSignUpCancelButtonClick(view: View?){
         finish()
     }
 
@@ -184,45 +285,7 @@ class SignUpActivity : AppCompatActivity() {
     // 회원가입 버튼 클릭 (회원가입로직)
     // 회원가입 로직은 성공 (실제 계정 생성확인)
     // region, major, grade 가 UI에 포함돼야함
-    fun onSignUpButtonClick(view: View) {
-        if (validateInputs() && isEmailVerified && isPhoneNumberVerified) {
-            val region = findViewById<EditText>(R.id.et_name).text.toString()
-            val email = findViewById<EditText>(R.id.et_id).text.toString()
-            val password = findViewById<EditText>(R.id.et_pw).text.toString()
-            val major = findViewById<EditText>(R.id.et_university).text.toString()
-            val grade = findViewById<EditText>(R.id.et_phonenumber).text.toString()
 
-
-
-            RetrofitClient.registerService.signupUser(UserSignup(email,password,major,grade,region))
-                .enqueue(object: Callback<UserResponse>{
-                    override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>){
-                        val statusCode = response.code() // HTTP 상태 코드
-                        Log.d("Response", "서버응답: ${response.body()}")
-                        Log.d("Response", "오류: $statusCode")
-                        if(response.isSuccessful){
-                            val message = response.body()?.message ?: "회원가입 성공"
-                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
-                        } else {
-                            // 에러 처리
-                            Toast.makeText(applicationContext, "회원가입 실패", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                    override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-
-                        Log.e("LoginError", "로그인 요청 실패: ", t) //디버깅용
-                        Toast.makeText(applicationContext, "네트워크 오류", Toast.LENGTH_SHORT).show()
-                    }
-                })
-            // 회원가입 처리
-            // Firebase나 다른 백엔드 서비스를 사용하여 사용자 정보 저장
-
-        } else {
-            // 유효성 검사 실패 또는 인증이 완료되지 않음
-            Toast.makeText(this, "모든 필수 정보를 입력하고 인증을 완료해야 합니다.", Toast.LENGTH_SHORT).show()
-        }
-    }
 
     // 입력을 받고 입력이 비어있지 않은지 확인
     private fun validateInputs(): Boolean {
@@ -238,6 +301,38 @@ class SignUpActivity : AppCompatActivity() {
                 password.isNotEmpty() && university.isNotEmpty() && birthDate.isNotEmpty()
     }
 
-    // 여기에 이메일과 전화번호 인증 관련 코드 추가 (예: 인증 버튼 클릭 리스너)
+    //프로필 생성
+    private fun createProfile(uid: String?, name: String, birth: String, phoneNumber: String, university: String, experience: String, major: String, grade: String, region: String) {
+        if (uid != null) {
+            val profileData = UserProfile(uid, name, birth, phoneNumber, university, experience, major, grade, region)
+            RetrofitClient.authService.createProfile(profileData)
+                .enqueue(object : Callback<GenericResponse> {
+                    override fun onResponse(call: Call<GenericResponse>, response: Response<GenericResponse>) {
+                        if (response.isSuccessful) {
+                            Toast.makeText(applicationContext, "프로필 생성 성공", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(applicationContext, "프로필 생성 실패", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<GenericResponse>, t: Throwable) {
+                        Toast.makeText(applicationContext, "프로필 생성 중 네트워크 오류", Toast.LENGTH_SHORT).show()
+                    }
+                })
+        }
+    }
+
+
+    //임시 전화번호 아이디 삭제
+    private fun deleteUserAccount(user: FirebaseUser) {
+        user.delete()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // 계정 삭제 성공
+                } else {
+                    // 계정 삭제 실패
+                }
+            }
+    }
 
 }

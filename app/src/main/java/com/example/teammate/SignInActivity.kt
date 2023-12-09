@@ -1,5 +1,6 @@
 package com.example.teammate
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -45,6 +46,10 @@ class SignInActivity : AppCompatActivity() {
                     Log.d("Response", "서버 응답: ${response.body()}")
                     if (response.isSuccessful) {
                         // 로그인 성공 처리
+                        val uid = response.body()?.uid
+                        saveUid(uid)
+                        navigateToNextActivity()
+
                         val message = response.body()?.message ?: "로그인 성공"
                         Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
                     } else {
@@ -60,4 +65,18 @@ class SignInActivity : AppCompatActivity() {
                 }
             })
     }
+
+    private fun saveUid(uid: String?) {
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("uid", uid)
+        editor.apply() // 또는 commit() 사용
+    }
+
+    private fun navigateToNextActivity() {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        finish() // 현재 액티비티 종료
+    }
+
 }

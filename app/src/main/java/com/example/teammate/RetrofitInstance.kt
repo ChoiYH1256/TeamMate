@@ -20,9 +20,7 @@ object RetrofitClient {
         retrofit.create(AuthService::class.java)
     }
 
-    val registerService: RegisterService by lazy{
-        retrofit.create(RegisterService::class.java)
-    }
+
 
     val postService: PostService by lazy{
         retrofit.create(PostService::class.java)

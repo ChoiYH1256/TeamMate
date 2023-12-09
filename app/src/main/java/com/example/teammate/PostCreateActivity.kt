@@ -121,12 +121,9 @@ class PostCreateActivity : AppCompatActivity() {
         val teamNumber = findViewById<Spinner>(R.id.team_number).toString()
         val content = findViewById<EditText>(R.id.et_content).text.toString()
 
-        val category = findViewById<Spinner>(R.id.recruit1_spinner).toString()
+        val category = findViewById<EditText>(R.id.tv_major).text.toString() // category 전공으로 둠
 
-        val hashtags = mutableListOf<String>() //나중에 hashtag 추가하기
-        hashtags.add(findViewById<Spinner>(R.id.recruit1_spinner).toString())
-        hashtags.add(findViewById<Spinner>(R.id.recruit2_spinner).toString())
-        hashtags.add(findViewById<Spinner>(R.id.recruit3_spinner).toString())
+        val hashtags = mutableListOf<String>() //나중에 hashtag 추가하기 //해쉬태그가 필요한가?
 
         RetrofitClient.postService.createPost(PostCreate(uid,title,teamNumber,content,category,hashtags))
             .enqueue(object : Callback<PostResponse> {

@@ -14,8 +14,8 @@ class NotificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)
 
-        btnNotification = findViewById(R.id.btn_notification)
-        updateNotificationIcon() // 초기 상태 설정
+      //  btnNotification = findViewById(R.id.btn_notification)
+      // updateNotificationIcon() // 초기 상태 설정
     }
 
     //뒤로가기 버튼

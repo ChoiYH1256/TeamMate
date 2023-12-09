@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.example.teammate"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.teammate"
