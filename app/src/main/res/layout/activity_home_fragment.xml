@@ -106,6 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/common_transparent"
+            android:contentDescription="more_information"
             app:layout_constraintBottom_toBottomOf="@id/tv_more"
             app:layout_constraintEnd_toEndOf="@id/tv_more"
             app:layout_constraintStart_toStartOf="@id/tv_more"

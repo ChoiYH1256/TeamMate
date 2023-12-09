@@ -44,24 +44,81 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="139dp"
+            android:layout_height="360dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="@string/team_filter_category_tv_area"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:background="@color/custom_blue"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintStart_toStartOf="@+id/tv_area"
+                app:layout_constraintTop_toBottomOf="@+id/tv_area">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/city_spinner"
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/spinner_selector"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="20dp" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/sigungu_spinner"
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/spinner_selector"
+                        app:layout_constraintBottom_toBottomOf="@+id/city_spinner"
+                        app:layout_constraintEnd_toStartOf="@+id/dong_spinner"
+                        app:layout_constraintStart_toEndOf="@+id/city_spinner"
+                        app:layout_constraintTop_toTopOf="@+id/city_spinner" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/dong_spinner"
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/spinner_selector"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="@+id/sigungu_spinner"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/sigungu_spinner" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
 
 
             <TextView
                 android:id="@+id/tv_major"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/pretendardbold"
                 android:text="@string/team_filter_category_major"
                 android:textColor="@color/black"
                 android:textSize="17sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="@+id/tv_area"
+                app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
 
             <androidx.cardview.widget.CardView
@@ -83,6 +140,39 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/tv_major"
                     app:layout_constraintTop_toBottomOf="@+id/tv_major" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="@string/team_filter_category_grade"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_major"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewGrade"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:background="@color/custom_blue"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_grade"
+                app:layout_constraintTop_toBottomOf="@+id/tv_grade">
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/grade_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/spinner_selector"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_grade"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_grade" />
             </androidx.cardview.widget.CardView>
 
 

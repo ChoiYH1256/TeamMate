@@ -128,7 +128,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="520dp"
                 android:layout_marginTop="40dp"
                 android:padding="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -143,7 +143,7 @@
                     android:layout_marginBottom="4dp"
                     android:text="내가 작성한 게시글"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/cv_announcement"
                     app:layout_constraintStart_toStartOf="parent"
@@ -161,10 +161,12 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_more_information1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="90dp"
+                    android:layout_height="48dp"
                     android:background="@color/common_transparent"
                     android:contentDescription="description_more_information"
+                    android:minWidth="90dp"
+                    android:minHeight="48dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_moreAnnouncement"
                     app:layout_constraintEnd_toEndOf="@id/tv_moreAnnouncement"
                     app:layout_constraintStart_toStartOf="@id/tv_moreAnnouncement"
@@ -203,7 +205,7 @@
                     android:layout_marginTop="15dp"
                     android:text="내가 좋아요 누른 글"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/cv_match"
                     app:layout_constraintStart_toStartOf="parent"
@@ -269,7 +271,7 @@
                 android:contentDescription="인재정보에 공개하기"
                 android:text="인재정보에 공개하기"
                 android:textColor="@color/custom_blue"
-                android:textSize="12dp"
+                android:textSize="11sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -286,7 +288,7 @@
                 android:contentDescription="프로필 수정"
                 android:text="프로필 수정"
                 android:textColor="@color/custom_blue"
-                android:textSize="12dp"
+                android:textSize="11sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/login_logo" />
@@ -301,7 +303,7 @@
                 android:contentDescription="현재 정보 비공개 상태"
                 android:text="정보 비공개 중"
                 android:textColor="@color/custom_blue"
-                android:textSize="12dp"
+                android:textSize="11sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/btn_phone_auth2"
                 app:layout_constraintTop_toBottomOf="@+id/tv_name" />
