@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="홈" />
+    <item
+        android:id="@+id/navigation_team"
+        android:icon="@drawable/ic_team"
+        android:title="팀원모집" />
+    <item
+        android:id="@+id/navigation_talent"
+        android:icon="@drawable/ic_talent"
+        android:title="인재정보" />
+    <item
+        android:id="@+id/navigation_account"
+        android:icon="@drawable/ic_account"
+        android:title="계정" />
+</menu>

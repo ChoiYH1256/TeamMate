@@ -166,8 +166,8 @@
 
             <Button
                 android:id="@+id/btn_verify_otp"
-                android:layout_width="60dp"
-                android:layout_height="22dp"
+                android:layout_width="68dp"
+                android:layout_height="26dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/btn_full"
                 android:text="인증확인"
@@ -180,8 +180,8 @@
 
             <Button
                 android:id="@+id/btn_verify_otp_email"
-                android:layout_width="60dp"
-                android:layout_height="22dp"
+                android:layout_width="68dp"
+                android:layout_height="26dp"
                 android:layout_marginTop="132dp"
                 android:background="@drawable/btn_full"
                 android:onClick="onOtpEmailButtonClick"
@@ -487,8 +487,8 @@
 
             <Button
                 android:id="@+id/btn_id_auth"
-                android:layout_width="60dp"
-                android:layout_height="24dp"
+                android:layout_width="68dp"
+                android:layout_height="26dp"
                 android:layout_marginTop="100dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/btn_full"
@@ -503,7 +503,7 @@
 
             <Button
                 android:id="@+id/btn_phone_auth"
-                android:layout_width="66dp"
+                android:layout_width="68dp"
                 android:layout_height="26dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="20dp"
