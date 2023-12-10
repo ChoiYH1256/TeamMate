@@ -110,6 +110,7 @@ class SignUpActivity : AppCompatActivity() {
                         Log.d("Response", "오류: $statusCode")
                         if(response.isSuccessful){
                             val uid = response.body()?.uid
+
                             createProfile(uid, name, birth, phoneNumber, university,experience, major, grade, region)
 
                             val message = response.body()?.message ?: "회원가입 성공"
@@ -316,6 +317,9 @@ class SignUpActivity : AppCompatActivity() {
             RetrofitClient.authService.createProfile(profileData)
                 .enqueue(object : Callback<GenericResponse> {
                     override fun onResponse(call: Call<GenericResponse>, response: Response<GenericResponse>) {
+                        val statusCode = response.code() // HTTP 상태 코드
+                        Log.d("ProfileResponse", "서버응답: ${response.body()}")
+                        Log.d("ProfileResponse", "오류: $statusCode")
                         if (response.isSuccessful) {
                             Toast.makeText(applicationContext, "프로필 생성 성공", Toast.LENGTH_SHORT).show()
                         } else {

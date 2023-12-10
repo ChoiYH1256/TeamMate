@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".PostEditActivity">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -492,14 +493,14 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_submit"
+                android:id="@+id/btn_edit_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="16dp"
-                android:onClick="onSubmitButtonClick"
+                android:onClick="onEditSubmitButtonClick"
                 android:background="@drawable/btn_full"
                 android:text="수정하기"
                 android:textColor="@color/white"

@@ -27,6 +27,10 @@ class PostActivity : AppCompatActivity() {
     private lateinit var tvContent: TextView
     private lateinit var tvNickname: TextView
 
+    private lateinit var post_Id: String
+    private lateinit var post_Uid: String
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
@@ -34,6 +38,7 @@ class PostActivity : AppCompatActivity() {
         current_uid = getSavedUid() ?:return
         //글 작성자인지 확인하는 로직
         //checkIfUserIsAuthor()
+        // 게시글 정보를 받아와서 멤버 변수에 저장
 
         val toolbar: Toolbar = findViewById(R.id.btn_cancel) // Toolbar의 실제 ID를 확인하세요.
         setSupportActionBar(toolbar)
@@ -64,6 +69,14 @@ class PostActivity : AppCompatActivity() {
 
     }
 
+    fun onApplyButtonClick(view: View){
+        val intent = Intent(this, MatchWritingActivity::class.java)
+        intent.putExtra("POST_ID", post_Id)
+        intent.putExtra("POST_UID", post_Uid)
+        startActivity(intent)
+    }
+
+
     private fun loadPost(postId: String) {
         RetrofitClient.postService.getPost(postId).enqueue(object : Callback<Post> {
             override fun onResponse(call: Call<Post>, response: Response<Post>) {
@@ -72,6 +85,11 @@ class PostActivity : AppCompatActivity() {
                 Log.d("Response", "오류: $statusCode")
                 if (response.isSuccessful) {
                     val post = response.body()!!
+
+                    post_Id = post.postId
+                    post_Uid = post.uid
+
+
                     tvTitle.text = post.title
                     tvContent.text = post.content
                     post_uid = post.uid // 게시물의 ID를 post_uid에 할당

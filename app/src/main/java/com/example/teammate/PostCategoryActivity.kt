@@ -1,5 +1,6 @@
 package com.example.teammate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -15,10 +16,24 @@ class PostCategoryActivity : AppCompatActivity() {
 
 
         val deleteButton = findViewById<AppCompatButton>(R.id.btn_delete)
-
         deleteButton.setOnClickListener {
             deletePost(postId)
         }
+
+        val editButton = findViewById<AppCompatButton>(R.id.btn_edit)
+        editButton.setOnClickListener({
+            val intent = Intent(this, PostEditActivity::class.java)
+            intent.putExtra("POST_ID", postId)
+            startActivity(intent)
+        })
+
+        val applicantButton = findViewById<AppCompatButton>(R.id.btn_view_application)
+        applicantButton.setOnClickListener({
+            val intent = Intent(this, AllApplicationActivity::class.java)
+            intent.putExtra("POST_ID", postId)
+            startActivity(intent)
+        })
+
     }
 
     private fun deletePost(postId: String) {
@@ -40,6 +55,8 @@ class PostCategoryActivity : AppCompatActivity() {
             }
         })
     }
+
+
 
     private fun getPostId(): String {
         // 게시물 ID를 반환하는 로직 구현

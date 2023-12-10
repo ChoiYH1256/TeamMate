@@ -30,4 +30,9 @@ object RetrofitClient {
         retrofit.create(ChatService::class.java)
     }
 
+    val applicationService: ApplicationService by lazy {
+        retrofit.create(ApplicationService::class.java)
+    }
+
+
 }

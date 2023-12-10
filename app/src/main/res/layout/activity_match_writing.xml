@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".MatchWritingActivity">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -55,6 +56,7 @@
                 android:text="제출하기"
                 android:textColor="@color/white"
                 android:textStyle="bold"
+                android:onClick="onApplicantSubmitButtonClick"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -90,11 +92,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-                    <TextView
-                        android:id="@+id/textView8"
+                    <EditText
+                        android:id="@+id/et_introduction"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="안녕하세요."
+                        android:hint="메세지를 입력하세요"
                         android:layout_marginTop="14dp"
                         android:layout_marginRight="13dp"
                         android:layout_marginLeft="13dp"

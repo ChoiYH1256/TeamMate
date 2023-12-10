@@ -15,9 +15,9 @@ interface AuthService {
     fun signupUser(@Body userData: UserSignup): Call<UserResponse>
     @POST("api/login")
     fun loginUser(@Body userData: UserLogin): Call<UserResponse>
-    @POST("api/createProfile")
+    @POST("api/createprofile")
     fun createProfile(@Body profileData: UserProfile): Call<GenericResponse>
-    @POST("api/editProfile")
+    @POST("api/editprofile")
     fun editProfile(@Body profileData: UserProfile): Call<GenericResponse>
     @GET("api/getProfile/{uid}")
     fun getProfile(@Path("uid") uid: String): Call<UserProfile>
@@ -45,7 +45,7 @@ interface PostService{
     @POST("api/post/create")
     fun createPost(@Body postData: PostCreate): Call<PostResponse>
 
-    @POST("api/post/edit")
+    @POST("api/post/edit/{postId}")
     fun editPost(@Path("postId") postId: String, @Body updatedPost: Post): Call<PostResponse>
 
     @DELETE("api/post/delete/{postId}")
@@ -67,6 +67,15 @@ interface ChatService {
     fun getChatRoomMessages(@Path("chatRoomId") chatRoomId: String): Call<GetChatRoomMessagesResponse>
 }
 
+interface ApplicationService {
+
+    @POST("api/apply/createApplication")
+    fun createApplication(@Body applicationCreate: ApplicationCreate): Call<GenericResponse>
+
+    @GET("api/apply/getApplication/{applicantId}")
+    fun getApplication(@Path("applicantId") applicantId: String): Call<ApplicationDetails>
+
+}
 
 
 
@@ -75,7 +84,6 @@ data class PostResponse(val postId: String, val message: String)
 data class UserLogin(val email: String, val password: String)
 data class UserSignup(val email: Any, val password: Any, val major: Any, val grade: Any, val region: Any)
 data class UserProfile(val uid: String, val name: String, val birth: String, val phoneNumber: String, val university: String, val experience: String, val major: String, val grade: String, val region: String)
-data class GenericResponse(val message: String)
 data class PostCreate(val uid: String, val title: String, val teamNumber: Any, val content: String, val major: String)
 
 /////////////////////채팅 관련 클래스 ////////////////////
@@ -98,6 +106,26 @@ data class GetChatRoomMessagesResponse(
     val messages: List<ChatMessage>
 )
 
+////////////////// 지원서 관련 클래스 //////////////////
+// Data class for creating an application
+data class ApplicationCreate(
+    val postid: String,
+    val writerid: String,
+    val applicantid: String,
+    val selfIntroduction: String,
+    val resume: String
+)
+
+// Data class for receiving application details
+data class ApplicationDetails(
+    val profile: UserProfile,
+    val applications: List<Application>
+)
+
+// Data class for a generic response
+data class GenericResponse(val message: String)
+
+////////////////////////////////////////////////////
 //data class ChatMessage(
   //  val sender: String,
  //   val message: String,
@@ -113,7 +141,7 @@ data class Post(
     val teamNumber: Any,
     val content: String,
     val major: String,
-    val postId: String? = null // 서버에서 생성된 ID를 저장하는 필드
+    val postId: String // 서버에서 생성된 ID를 저장하는 필드
 )
 
 data class Application(

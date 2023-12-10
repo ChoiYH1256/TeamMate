@@ -1,43 +1,44 @@
 package com.example.teammate
 
+import android.Manifest
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.ImageButton
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.Toolbar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import java.util.Calendar
-import android.Manifest
-import android.content.Context
-import android.util.Log
-import android.widget.EditText
-import android.widget.Spinner
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+class PostEditActivity : AppCompatActivity() {
 
-class PostCreateActivity : AppCompatActivity() {
+    private lateinit var postId: String
 
     private lateinit var textView: TextView
     private val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123
 
     //이미지 버튼 요청
     private val PICK_IMAGE_REQUEST = 1
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_post_create)
+        setContentView(R.layout.activity_post_edit)
+
+        postId = intent.getStringExtra("POST_ID") ?: return
+
 
         textView = findViewById<TextView>(R.id.tv_date_picker)
         textView.setOnClickListener {
@@ -46,11 +47,39 @@ class PostCreateActivity : AppCompatActivity() {
             })
         }
 
-
+        loadPostData(postId)
 
     }
 
-    //이미지 등록 버튼
+    // 게시물 데이터 로드 메서드
+    private fun loadPostData(postId: String) {
+        RetrofitClient.postService.getPost(postId).enqueue(object : Callback<Post> {
+            override fun onResponse(call: Call<Post>, response: Response<Post>) {
+                if (response.isSuccessful) {
+                    val post = response.body()
+                    fillPostData(post)
+                } else {
+                    // 오류 처리
+                }
+            }
+
+            override fun onFailure(call: Call<Post>, t: Throwable) {
+                // 네트워크 오류 처리
+            }
+        })
+    }
+
+    // 받아온 게시물 데이터로 입력 필드 채우기
+    private fun fillPostData(post: Post?) {
+        post?.let {
+            findViewById<EditText>(R.id.et_postcreatetitle).setText(it.title)
+            findViewById<EditText>(R.id.et_content).setText(it.content)
+            // 다른 필드도 동일하게 적용
+        }
+    }
+
+
+
     fun onAddImageButton(view: View) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE)
@@ -88,7 +117,7 @@ class PostCreateActivity : AppCompatActivity() {
     }
 
     //글 작성 버튼 클릭 (유효하면 정보 저장 아니면 저장X)
-    fun onSubmitButtonClick(view: View) {
+    fun onEditSubmitButtonClick(view: View) {
         if (isInputValid()) {
             saveData()
             finish()
@@ -113,7 +142,6 @@ class PostCreateActivity : AppCompatActivity() {
         return true
     }
 
-    // 데이터를 저장하는 메서드
     private fun saveData() {
         // 여기에 데이터 저장 로직을 구현합니다.
         // 예: 파이어베이스 또는 로컬 데이터베이스에 저장
@@ -125,30 +153,25 @@ class PostCreateActivity : AppCompatActivity() {
         val content = findViewById<EditText>(R.id.et_content).text.toString()
         val major = findViewById<EditText>(R.id.et_postcreatemajor).text.toString() // category 전공으로 둠
 
+        val updatedPost = Post(uid, title, teamNumber, content, major, postId)
 
-        RetrofitClient.postService.createPost(PostCreate(uid,title,teamNumber,content,major))
-            .enqueue(object : Callback<PostResponse> {
-                override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
-                    val statusCode = response.code() // HTTP 상태 코드
-                    Log.d("Response", "서버응답: ${response.body()}")
-                    Log.d("Response", "상태코드: $statusCode")
-
-                    if (response.isSuccessful) {
-                        val message = response.body()?.message ?: "게시글 생성 성공"
-                        Toast.makeText(applicationContext, "게시글이 생성되었습니다.", Toast.LENGTH_LONG).show()
-                    } else {
-                        // 에러 처리
-                        Toast.makeText(applicationContext, "게시글 등록 실패", Toast.LENGTH_SHORT).show()
-                    }
+        RetrofitClient.postService.editPost(postId, updatedPost).enqueue(object : Callback<PostResponse> {
+            override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
+                if (response.isSuccessful) {
+                    // 수정이 성공적으로 반영되었을 때의 처리
+                    Toast.makeText(applicationContext, "게시글이 수정되었습니다.", Toast.LENGTH_LONG).show()
+                    // 필요한 경우 다른 액티비티로 이동하거나 UI를 업데이트합니다.
+                } else {
+                    // 서버에서 응답이 왔으나 수정 실패 처리
+                    Toast.makeText(applicationContext, "게시글 수정 실패: ${response.errorBody()?.string()}", Toast.LENGTH_SHORT).show()
                 }
+            }
 
-                override fun onFailure(call: Call<PostResponse>, t: Throwable) {
-
-                    Log.e("LoginError", "게시글 요청 실패: ", t) //디버깅용
-                    Toast.makeText(applicationContext, "네트워크 오류", Toast.LENGTH_SHORT).show()
-                }
-            })
-
+            override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+                // 네트워크 오류 처리
+                Toast.makeText(applicationContext, "네트워크 오류: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
 
