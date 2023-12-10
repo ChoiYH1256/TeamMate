@@ -17,6 +17,9 @@
         android:theme="@style/Theme.TeamMate"
         tools:targetApi="31">
         <activity
+            android:name=".PostCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".TalentFilterCategoryActivity"
             android:exported="false" />
         <activity

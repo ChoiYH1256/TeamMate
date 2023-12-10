@@ -40,12 +40,6 @@ class PostActivity : AppCompatActivity() {
         // 뒤로 가기 버튼 활성화
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // ImageView 초기화 및 클릭 리스너 설정
-        val ivBookmark: ImageView = findViewById(R.id.iv_bookmark)
-        ivBookmark.setOnClickListener {
-            toggleBookmark()
-        }
-
         // 글 로직
         tvTitle = findViewById(R.id.tv_title)
         tvContent = findViewById(R.id.tv_content)
@@ -53,6 +47,20 @@ class PostActivity : AppCompatActivity() {
         val postId = intent.getStringExtra("POST_ID") ?: return
         Log.d("PostActivity", "Post ID: $postId")
         loadPost(postId)
+
+        // ImageView 초기화 및 클릭 리스너 설정
+        val ivBookmark: ImageView = findViewById(R.id.iv_bookmark)
+        ivBookmark.setOnClickListener {
+            if (postId != null) {
+                // PostCategoryActivity를 시작하고 post_id를 전달합니다.
+                val intent = Intent(this@PostActivity, PostCategoryActivity::class.java)
+                intent.putExtra("POST_ID", postId)
+                startActivity(intent)
+            } else {
+                // post_uid가 null일 경우 처리할 내용을 여기에 추가하세요.
+            }
+        }
+
 
     }
 
@@ -119,20 +127,20 @@ class PostActivity : AppCompatActivity() {
     }
 
     //북마크 토글
-    private fun toggleBookmark() {
-        isBookmarked = !isBookmarked // 북마크 상태 토글
-        updateBookmarkIcon()
-    }
+//    private fun toggleBookmark() {
+//        isBookmarked = !isBookmarked // 북마크 상태 토글
+//        updateBookmarkIcon()
+//    }
 
     //북마크 상태 업데이트
-    private fun updateBookmarkIcon() {
-        val ivBookmark: ImageView = findViewById(R.id.iv_bookmark)
-        if (isBookmarked) {
-            ivBookmark.setImageResource(R.drawable.ic_bookmarked) // 활성화된 북마크 아이콘
-        } else {
-            ivBookmark.setImageResource(R.drawable.ic_bookmark) // 기본 북마크 아이콘
-        }
-    }
+//    private fun updateBookmarkIcon() {
+//        val ivBookmark: ImageView = findViewById(R.id.iv_bookmark)
+//        if (isBookmarked) {
+//            ivBookmark.setImageResource(R.drawable.ic_bookmarked) // 활성화된 북마크 아이콘
+//        } else {
+//            ivBookmark.setImageResource(R.drawable.ic_bookmark) // 기본 북마크 아이콘
+//        }
+//    }
 
     fun createChatRoom(postUid: String?, currentUserUid: String?) {
         val request = CreateChatRoomRequest(currentUserUid, postUid)
@@ -159,10 +167,16 @@ class PostActivity : AppCompatActivity() {
         })
     }
 
+
+
+
     private fun getSavedUid(): String? {
         val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
         return sharedPreferences.getString("uid", null)
     }
+
+
+
 
     /* 글 작성자인지 확인하고 작성자면 delete button 활성화
       private fun checkIfUserIsAuthor() {

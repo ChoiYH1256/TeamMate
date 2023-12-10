@@ -48,7 +48,7 @@ interface PostService{
     @POST("api/post/edit")
     fun editPost(@Path("postId") postId: String, @Body updatedPost: Post): Call<PostResponse>
 
-    @DELETE("api/post/delete")
+    @DELETE("api/post/delete/{postId}")
     fun deletePost(@Path("postId") postId: String): Call<PostResponse>
 
     @GET("api/post/getPostApplications/{postId}")
