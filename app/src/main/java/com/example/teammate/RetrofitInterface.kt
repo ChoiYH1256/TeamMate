@@ -24,6 +24,9 @@ interface AuthService {
     @GET("api/getProfileByCategory/{category}/{value}")
     fun getProfileByCategory(@Path("category") category: String, @Path("value") value: String): Call<List<UserProfile>>
 
+    @GET("api/getAllUsers")
+    fun getAllUsers(): Call<List<UserProfile>>
+
 }
 
 //회원가입 인터페이스
