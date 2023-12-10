@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
@@ -38,6 +39,14 @@ class RecruitActivity : AppCompatActivity() {
         filterButton.setOnClickListener {
             val intent = Intent(this, TeamFilterCategoryActivity::class.java)
             startActivityForResult(intent, FILTER_REQUEST_CODE)
+        }
+        val toolbar = findViewById<Toolbar>(R.id.btn_back)
+        setSupportActionBar(toolbar)
+
+        // 뒤로가기 아이콘 클릭 이벤트 처리
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener {
+            onBackPressed() // 또는 다른 원하는 동작 수행
         }
 
     }

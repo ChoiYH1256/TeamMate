@@ -21,7 +21,6 @@ object RetrofitClient {
     }
 
 
-
     val postService: PostService by lazy{
         retrofit.create(PostService::class.java)
     }
