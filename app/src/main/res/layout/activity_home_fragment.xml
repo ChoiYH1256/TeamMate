@@ -126,18 +126,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title_match">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_match"
+            <ImageView
+                android:id="@+id/iv_recommendation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/custom_lightblue"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="5dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:contentDescription="recommendation_image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/recommendation_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:listitem="@layout/activity_home_recyclerview_item_match" />
+                app:layout_constraintTop_toTopOf="parent" />
+
 
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
