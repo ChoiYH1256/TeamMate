@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,6 +48,17 @@ class RecruitActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
             onBackPressed() // 또는 다른 원하는 동작 수행
+        }
+
+
+        // FloatingActionButton 참조
+        val fabAdd = findViewById<FloatingActionButton>(R.id.fab_add)
+
+        // FloatingActionButton에 클릭 리스너 설정
+        fabAdd.setOnClickListener {
+            // PostCreateActivity 시작
+            val intent = Intent(this, PostCreateActivity::class.java)
+            startActivity(intent)
         }
 
     }

@@ -59,6 +59,7 @@ class HomeActivity : AppCompatActivity() {
         recyclerView.adapter = PostRecyclerviewAdapter(posts) { post ->
             val intent = Intent(this, PostActivity::class.java)
             intent.putExtra("POST_ID", post.postId)
+            Log.d("PostActivity", "Post ID: $post")
             startActivity(intent)
         }
     }

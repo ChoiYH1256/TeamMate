@@ -39,7 +39,7 @@ interface PostService{
     fun getAllPosts(): Call<List<Post>>
 
     //특정 post 불러오기
-    @GET("api/post/get/{postId}")
+    @GET("api/post/getPost/{postId}")
     fun getPost(@Path("postId") postId: String): Call<Post>
 
     @POST("api/post/create")
@@ -56,13 +56,14 @@ interface PostService{
 }
 
 interface ChatService {
-    @POST("api/chatRooms")
+    @POST("api/chat/createChatRoom")
     fun createChatRoom(@Body users: CreateChatRoomRequest): Call<CreateChatRoomResponse>
 
-    @POST("api/sendMessage")
-    fun sendMessage(@Path("chatRoomId") chatRoomId: String, @Body message: SendMessageRequest): Call<Void>
+    @POST("api/chat/sendMessage")
+    fun sendMessage(@Body message: SendMessageRequest): Call<Void>
+    // fun sendMessage(@Path("chatRoomId") chatRoomId: String, @Body message: SendMessageRequest): Call<Void>
 
-    @GET("api/getChatRoomMessage/{chatRoomId}")
+    @GET("api/chat/getChatRoomMessages/{chatRoomId}")
     fun getChatRoomMessages(@Path("chatRoomId") chatRoomId: String): Call<GetChatRoomMessagesResponse>
 }
 
@@ -79,17 +80,17 @@ data class PostCreate(val uid: String, val title: String, val teamNumber: Any, v
 
 /////////////////////채팅 관련 클래스 ////////////////////
 data class CreateChatRoomRequest(
-    val user1: String,
-    val user2: String
+    val user1: String?,
+    val user2: String?
 )
 
 data class CreateChatRoomResponse(
-    val chatRoomId: String
+    val chatRoomId: String?
 )
 
 data class SendMessageRequest(
-    val chatRoomId: String,
-    val sender: String,
+    val chatRoomId: String?,
+    val sender: String?,
     val message: String
 )
 
@@ -97,11 +98,11 @@ data class GetChatRoomMessagesResponse(
     val messages: List<ChatMessage>
 )
 
-data class ChatMessage(
-    val sender: String,
-    val message: String,
-    val timestamp: String // timestamp는 일반적으로 서버에서 Date 객체로 반환되며, 클라이언트 측에서 적절하게 포맷팅할 수 있습니다.
-)
+//data class ChatMessage(
+  //  val sender: String,
+ //   val message: String,
+ //   val timestamp: String // timestamp는 일반적으로 서버에서 Date 객체로 반환되며, 클라이언트 측에서 적절하게 포맷팅할 수 있습니다.
+//)
 
 
 

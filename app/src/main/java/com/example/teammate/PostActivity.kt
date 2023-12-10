@@ -1,23 +1,37 @@
 package com.example.teammate
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class PostActivity : AppCompatActivity() {
 
     private var isBookmarked = false // 북마크 상태를 추적하는 변수
+    private lateinit var current_uid: String
+    private var post_uid: String? = null// post_uid를 nullable String?으로 선언
+
+    private lateinit var tvTitle: TextView
+    private lateinit var tvContent: TextView
+    private lateinit var tvNickname: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
 
+        current_uid = getSavedUid() ?:return
         //글 작성자인지 확인하는 로직
         //checkIfUserIsAuthor()
 
@@ -31,12 +45,65 @@ class PostActivity : AppCompatActivity() {
         ivBookmark.setOnClickListener {
             toggleBookmark()
         }
+
+        // 글 로직
+        tvTitle = findViewById(R.id.tv_title)
+        tvContent = findViewById(R.id.tv_content)
+        tvNickname = findViewById(R.id.tv_nickname)
+        val postId = intent.getStringExtra("POST_ID") ?: return
+        Log.d("PostActivity", "Post ID: $postId")
+        loadPost(postId)
+
     }
+
+    private fun loadPost(postId: String) {
+        RetrofitClient.postService.getPost(postId).enqueue(object : Callback<Post> {
+            override fun onResponse(call: Call<Post>, response: Response<Post>) {
+                val statusCode = response.code() // HTTP 상태 코드
+                Log.d("Response", "서버응답: ${response.body()}")
+                Log.d("Response", "오류: $statusCode")
+                if (response.isSuccessful) {
+                    val post = response.body()!!
+                    tvTitle.text = post.title
+                    tvContent.text = post.content
+                    post_uid = post.uid // 게시물의 ID를 post_uid에 할당
+                    // 사용자 프로필 요청
+                    RetrofitClient.authService.getProfile(post.uid).enqueue(object : Callback<UserProfile> {
+                        override fun onResponse(call: Call<UserProfile>, response: Response<UserProfile>) {
+                            if (response.isSuccessful) {
+                                val user = response.body()!!
+                                tvNickname.text = user.name
+                            } else {
+                                // 오류 처리
+                                Log.e("PostActivity", "오류: ${response.errorBody()?.string()}")
+                            }
+                        }
+
+                        override fun onFailure(call: Call<UserProfile>, t: Throwable) {
+                            Log.e("PostActivity", "네트워크 오류: ", t)
+                        }
+                    })
+                } else {
+                    // 오류 처리
+                    Log.e("PostActivity", "오류: ${response.errorBody()?.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<Post>, t: Throwable) {
+                // 네트워크 오류 처리
+                Log.e("PostActivity", "네트워크 오류: ", t)
+            }
+        })
+    }
+
+
     fun onPostToChatButtonClick(view: View) { //채팅창으로 넘어감
-        // ChatActivity로 이동하는 인텐트를 생성합니다.
-        val intent = Intent(this, ChatActivity::class.java)
-        // ChatActivity로 이동합니다.
-        startActivity(intent)
+
+       // val intent = Intent(this, ChatActivity::class.java)
+       // startActivity(intent)
+        createChatRoom(post_uid,current_uid)
+
+
     }
 
     //뒤로가기
@@ -65,6 +132,36 @@ class PostActivity : AppCompatActivity() {
         } else {
             ivBookmark.setImageResource(R.drawable.ic_bookmark) // 기본 북마크 아이콘
         }
+    }
+
+    fun createChatRoom(postUid: String?, currentUserUid: String?) {
+        val request = CreateChatRoomRequest(currentUserUid, postUid)
+        RetrofitClient.chatService.createChatRoom(request).enqueue(object : Callback<CreateChatRoomResponse> {
+            override fun onResponse(call: Call<CreateChatRoomResponse>, response: Response<CreateChatRoomResponse>) {
+                val statusCode = response.code() // HTTP 상태 코드
+                Log.d("Response", "서버응답: ${response.body()}")
+                Log.d("Response", "오류: $statusCode")
+                if (response.isSuccessful) {
+                    val chatRoomId = response.body()?.chatRoomId
+                    // 채팅방 화면으로 이동하는 코드. 예: ChatActivity 시작
+                    val intent = Intent(this@PostActivity, ChatActivity::class.java)
+                    intent.putExtra("CHAT_ROOM_ID", chatRoomId)
+                    startActivity(intent)
+                } else {
+                    // 에러 처리
+                }
+            }
+            override fun onFailure(call: Call<CreateChatRoomResponse>, t: Throwable) {
+                // 네트워크 오류 처리
+                Log.e("CreateChatError", "로그인 요청 실패: ", t) //디버깅용
+                Toast.makeText(applicationContext, "네트워크 오류", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun getSavedUid(): String? {
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getString("uid", null)
     }
 
     /* 글 작성자인지 확인하고 작성자면 delete button 활성화
