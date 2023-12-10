@@ -56,7 +56,7 @@ class HomeActivity : AppCompatActivity() {
     private fun setupRecyclerView(posts: List<Post>) {
         val recyclerView = findViewById<RecyclerView>(R.id.rv_announcement)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = HomePostRecyclerviewAdapter(posts) { post ->
+        recyclerView.adapter = PostRecyclerviewAdapter(posts) { post ->
             val intent = Intent(this, PostActivity::class.java)
             intent.putExtra("POST_ID", post.postId)
             startActivity(intent)

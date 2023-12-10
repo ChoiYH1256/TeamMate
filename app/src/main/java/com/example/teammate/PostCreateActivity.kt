@@ -119,18 +119,13 @@ class PostCreateActivity : AppCompatActivity() {
         //중요! 값은 임시로 넣은것! 다 수정해야함!! //
         val uid: String = getSavedUid() ?: "" //현재 나의 uid를 가져옴
         val title = findViewById<EditText>(R.id.et_postcreatetitle).text.toString()
-
         val teamNumberSpinner = findViewById<Spinner>(R.id.team_number)
         val teamNumber = teamNumberSpinner.selectedItem?.toString() ?: ""
-
         val content = findViewById<EditText>(R.id.et_content).text.toString()
+        val major = findViewById<EditText>(R.id.et_postcreatemajor).text.toString() // category 전공으로 둠
 
-        val category = findViewById<EditText>(R.id.et_postcreatemajor).text.toString() // category 전공으로 둠
 
-        val hashtags = mutableListOf<String>() //나중에 hashtag 추가하기 //해쉬태그가 필요한가?
-        hashtags.add("gg")
-
-        RetrofitClient.postService.createPost(PostCreate(uid,title,teamNumber,content,category,hashtags))
+        RetrofitClient.postService.createPost(PostCreate(uid,title,teamNumber,content,major))
             .enqueue(object : Callback<PostResponse> {
                 override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
                     val statusCode = response.code() // HTTP 상태 코드

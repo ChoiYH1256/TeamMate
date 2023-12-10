@@ -29,4 +29,8 @@ class TalentActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
+
+
 }

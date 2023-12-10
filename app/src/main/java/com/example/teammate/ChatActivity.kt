@@ -1,5 +1,6 @@
 package com.example.teammate
 
+import android.content.Context
 import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,9 @@ import java.util.Date
 import java.util.Locale
 
 class ChatActivity : AppCompatActivity() {
+
+    //나의 uid
+    private val userId = getSavedUid()
 
     private lateinit var adapter: MessageAdapter
     private lateinit var messageEditText: EditText
@@ -57,4 +61,8 @@ class ChatActivity : AppCompatActivity() {
     }
 
 
+    private fun getSavedUid(): String? {
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getString("uid", null)
+    }
 }

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class HomePostRecyclerviewAdapter(private val posts: List<Post>, private val onItemClicked: (Post) -> Unit) : RecyclerView.Adapter<HomePostRecyclerviewAdapter.PostViewHolder>() {
+class PostRecyclerviewAdapter(private val posts: List<Post>, private val onItemClicked: (Post) -> Unit) : RecyclerView.Adapter<PostRecyclerviewAdapter.PostViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_home_recyclerview_item_announcement, parent, false)

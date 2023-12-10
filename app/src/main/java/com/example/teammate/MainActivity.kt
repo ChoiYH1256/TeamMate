@@ -61,4 +61,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun onMainToRecruitButtonClick(view: View?){
+        val intent = Intent(this, RecruitActivity::class.java)
+        startActivity(intent)
+    }
+
 }
