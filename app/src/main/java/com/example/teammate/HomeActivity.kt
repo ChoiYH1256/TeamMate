@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -23,6 +24,38 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_fragment)
+
+        val ivTeam = findViewById<ImageView>(R.id.iv_team)
+        val ivTalent = findViewById<ImageView>(R.id.iv_talent)
+        val ivAccount = findViewById<ImageView>(R.id.iv_account)
+
+        // ImageView에 클릭 리스너 설정
+        ivTeam.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                // 클릭 이벤트 처리
+                val intent = Intent(this@HomeActivity, RecruitActivity::class.java)
+                startActivity(intent)
+            }
+        })
+
+        ivTalent.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                // 클릭 이벤트 처리
+                val intent = Intent(this@HomeActivity, TalentActivity::class.java)
+                startActivity(intent)
+            }
+        })
+
+        ivAccount.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                // 클릭 이벤트 처리
+                val intent = Intent(this@HomeActivity, MyPageActivity::class.java)
+                startActivity(intent)
+            }
+        })
+
+
+
 
         // Toolbar 초기화 및 설정
         toolbar = findViewById(R.id.tool_bar) // toolbar ID를 확인하세요.
